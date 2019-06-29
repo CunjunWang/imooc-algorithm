@@ -1,8 +1,10 @@
 #include <iostream>
+#include "student.h"
 
 using namespace std;
 
-void selectionSort(int arr[], int n) {
+template<typename T>
+void selectionSort(T arr[], int n) {
     for (int i = 0; i < n; i++) {
         // 寻找[i,n)区间中的最小值
         int minIndex = i;
@@ -20,6 +22,30 @@ int main() {
     selectionSort(a, 10);
     for (int i = 0; i < 10; i++) {
         cout << a[i] << " ";
+    }
+    cout << endl;
+
+    float b[10] = {4.4, 3.3, 2.2, 1.1};
+    selectionSort(b, 4);
+    for (int i = 0; i < 4; i++) {
+        cout << b[i] << " ";
+    }
+    cout << endl;
+
+    string c[10] = {"D", "C", "B", "A"};
+    selectionSort(c, 4);
+    for (int i = 0; i < 4; i++) {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+
+    Student d[4] = {{"D", 90},
+                    {"C", 100},
+                    {"B", 95},
+                    {"A", 95}};
+    selectionSort(d, 4);
+    for (int i = 0; i < 4; i++) {
+        cout << d[i];
     }
     cout << endl;
 
