@@ -6,11 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/selection-sort/SortTestHelper.h
+iostream
+-
+cassert
+-
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/selection-sort/main.cpp
 iostream
 -
 student.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/selection-sort/student.h
+SortTestHelper.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/selection-sort/SortTestHelper.h
 
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/selection-sort/student.h
 iostream
