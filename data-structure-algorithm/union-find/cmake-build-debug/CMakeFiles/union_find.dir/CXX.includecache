@@ -12,6 +12,10 @@ iostream
 cassert
 -
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/union-find/UnionFind2.h
+cassert
+-
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/union-find/UnionFindTestHelper.h
 iostream
 -
@@ -19,6 +23,8 @@ ctime
 -
 UnionFind1.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/union-find/UnionFind1.h
+UnionFind2.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/union-find/UnionFind2.h
 
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/union-find/main.cpp
 iostream

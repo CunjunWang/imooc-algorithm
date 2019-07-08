@@ -2,6 +2,8 @@
 // Created by 王存俊 on 2019-07-08.
 //
 
+// Quick find
+
 #ifndef UNION_FIND_UNIONFIND1_H
 #define UNION_FIND_UNIONFIND1_H
 
