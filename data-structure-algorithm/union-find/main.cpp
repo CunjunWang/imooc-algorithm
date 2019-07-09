@@ -15,6 +15,8 @@ int main() {
 
     UnionFindTestHelper::testUF4(n);
 
+    UnionFindTestHelper::testUF5(n);
+
     return 0;
 
 }

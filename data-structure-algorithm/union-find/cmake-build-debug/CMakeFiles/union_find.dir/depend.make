@@ -5,6 +5,7 @@ CMakeFiles/union_find.dir/main.cpp.o: ../UnionFind1.h
 CMakeFiles/union_find.dir/main.cpp.o: ../UnionFind2.h
 CMakeFiles/union_find.dir/main.cpp.o: ../UnionFind3.h
 CMakeFiles/union_find.dir/main.cpp.o: ../UnionFind4.h
+CMakeFiles/union_find.dir/main.cpp.o: ../UnionFind5.h
 CMakeFiles/union_find.dir/main.cpp.o: ../UnionFindTestHelper.h
 CMakeFiles/union_find.dir/main.cpp.o: ../main.cpp
 
