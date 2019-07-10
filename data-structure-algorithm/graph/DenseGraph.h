@@ -22,8 +22,8 @@ private:
 
 public:
     DenseGraph(int n, bool directed) {
-        this.n = n;
-        this.m = 0;
+        this->n = n;
+        this->m = 0;
         this->directed = directed;
         for (int i = 0; i < n; i++) {
             g.push_back(vector<bool>(n, false));
@@ -61,6 +61,40 @@ public:
         assert(w >= 0 && w < n);
         return g[v][w];
     }
+
+    class adjacentIterator {
+
+    private:
+        DenseGraph &G; // 图
+        int v; // 节点
+        int index; // 当前迭代位置
+
+    public:
+        adjacentIterator(DenseGraph &graph, int v) : G(graph) {
+            this->v = v;
+            this->index = 0;
+        }
+
+        int begin() {
+            index = -1;
+            return next();
+        }
+
+        int next() {
+            for (index += 1; index < G.V(); index++) {
+                if (G.g[v][index]) {
+                    return index;
+                }
+            }
+            return -1;
+        }
+
+        bool end() {
+            return index >= G.V();
+        }
+
+    };
+
 
 };
 

@@ -22,8 +22,8 @@ private:
 
 public:
     SparseGraph(int n, bool directed) {
-        this.n = n;
-        this.m = 0;
+        this->n = n;
+        this->m = 0;
         this->directed = directed;
         for (int i = 0; i < n; i++) {
             g.push_back(vector<int>());
@@ -34,9 +34,9 @@ public:
 
     }
 
-    int V() { return n };
+    int V() { return n; }
 
-    int E() { return m };
+    int E() { return m; }
 
     void addEdge(int v, int w) {
         assert(v >= 0 && v < n);
@@ -45,7 +45,7 @@ public:
         g[v].push_back(w);
         // 考虑自环边
         if (v != w && !directed) {
-            g[w].push_back(v;)
+            g[w].push_back(v);
         }
 
         // 由于平行边的判定为O(n), 暂时不考虑
@@ -64,6 +64,41 @@ public:
         }
         return false;
     }
+
+    class adjacentIterator {
+
+    private:
+        SparseGraph &G; // 图
+        int v; // 节点
+        int index; // 当前迭代位置
+
+    public:
+        adjacentIterator(SparseGraph &graph, int v) : G(graph) {
+            this->v = v;
+            this->index = 0;
+        }
+
+        int begin() {
+            index = 0;
+            if (G.g[v].size()) {
+                return G.g[v][index];
+            }
+            return -1;
+        }
+
+        int next() {
+            index++;
+            if (index < G.g[v].size()) {
+                return G.g[v][index];
+            }
+            return -1;
+        }
+
+        bool end() {
+            return index >= G.g[v].size();
+        }
+
+    };
 
 
 };
