@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/graph/Component.h
+iostream
+-
+cassert
+-
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/graph/DenseGraph.h
 iostream
 -
@@ -43,4 +49,6 @@ DenseGraph.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/graph/DenseGraph.h
 ReadGraph.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/graph/ReadGraph.h
+Component.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/graph/Component.h
 
