@@ -4,6 +4,7 @@
 #include "ReadGraph.h"
 #include "Component.h"
 #include "FindPath.h"
+#include "ShortestPath.h"
 
 using namespace std;
 
@@ -100,6 +101,17 @@ int main() {
 //    cout << "Test G2, Component count: " << component2.count() << endl;
 
 // ================== test for finding paths ===================
+//    string fileName = "testG2.txt";
+//    SparseGraph g = SparseGraph(6, false);
+//    ReadGraph<SparseGraph> readGraph(g, fileName);
+//    g.show();
+//    cout << endl;
+//
+//    FindPath<SparseGraph> DFS(g, 0);
+//    cout << "DFS : ";
+//    DFS.showPath(2);
+
+// ================== test for finding shortest path with BFS ===================
     string fileName = "testG2.txt";
     SparseGraph g = SparseGraph(6, false);
     ReadGraph<SparseGraph> readGraph(g, fileName);
@@ -108,7 +120,11 @@ int main() {
 
     FindPath<SparseGraph> DFS(g, 0);
     cout << "DFS : ";
-    DFS.showPath(2);
+    DFS.showPath(6);
+
+    ShortestPath<SparseGraph> BFS(g, 0);
+    cout << "BFS : ";
+    BFS.showPath(6);
 
     return 0;
 
