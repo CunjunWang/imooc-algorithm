@@ -4,6 +4,8 @@
 CMakeFiles/weighted_graph.dir/main.cpp.o
  /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/DenseGraph.h
  /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Edge.h
+ /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/LazyPrimMST.h
+ /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/MinHeap.h
  /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/ReadGraph.h
  /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/SparseGraph.h
  /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/main.cpp

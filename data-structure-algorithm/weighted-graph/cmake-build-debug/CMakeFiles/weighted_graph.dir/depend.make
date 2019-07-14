@@ -3,6 +3,8 @@
 
 CMakeFiles/weighted_graph.dir/main.cpp.o: ../DenseGraph.h
 CMakeFiles/weighted_graph.dir/main.cpp.o: ../Edge.h
+CMakeFiles/weighted_graph.dir/main.cpp.o: ../LazyPrimMST.h
+CMakeFiles/weighted_graph.dir/main.cpp.o: ../MinHeap.h
 CMakeFiles/weighted_graph.dir/main.cpp.o: ../ReadGraph.h
 CMakeFiles/weighted_graph.dir/main.cpp.o: ../SparseGraph.h
 CMakeFiles/weighted_graph.dir/main.cpp.o: ../main.cpp

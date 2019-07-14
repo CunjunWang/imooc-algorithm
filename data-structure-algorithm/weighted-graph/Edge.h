@@ -46,23 +46,23 @@ public:
     }
 
     bool operator<(Edge<Weight> &e) {
-        return weight < e.wt();
+        return weight < e.getWeight();
     }
 
     bool operator<=(Edge<Weight> &e) {
-        return weight <= e.wt();
+        return weight <= e.getWeight();
     }
 
     bool operator>(Edge<Weight> &e) {
-        return weight > e.wt();
+        return weight > e.getWeight();
     }
 
     bool operator>=(Edge<Weight> &e) {
-        return weight >= e.wt();
+        return weight >= e.getWeight();
     }
 
     bool operator==(Edge<Weight> &e) {
-        return weight == e.wt();
+        return weight == e.getWeight();
     }
 
 };
