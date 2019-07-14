@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/weighted_graph.dir/main_performance.cpp.o"
+  "CMakeFiles/weighted_graph.dir/main.cpp.o"
   "weighted_graph.pdb"
   "weighted_graph"
 )

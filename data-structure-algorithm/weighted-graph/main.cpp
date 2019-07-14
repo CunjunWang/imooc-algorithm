@@ -7,6 +7,7 @@
 #include "ReadGraph.h"
 #include "LazyPrimMST.h"
 #include "PrimMST.h"
+#include "KruskalMST.h"
 
 using namespace std;
 
@@ -53,6 +54,18 @@ int main() {
         cout << mst[i] << endl;
     }
     cout << "The MST weight is: " << primMst.result() << endl;
+
+    cout << endl;
+
+
+// ================ test for Kruskal mst ==============
+    cout << "Test Kruskal MST: " << endl;
+    KruskalMST<SparseGraph<double>, double> kruskalMst(g);
+    mst = kruskalMst.mstEdges();
+    for (int i = 0; i < mst.size(); i++) {
+        cout << mst[i] << endl;
+    }
+    cout << "The MST weight is: " << kruskalMst.result() << endl;
 
     cout << endl;
 

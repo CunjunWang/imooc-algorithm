@@ -28,6 +28,18 @@ algorithm
 cassert
 -
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/KruskalMST.h
+iostream
+-
+vector
+-
+MinHeap.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/MinHeap.h
+UnionFind.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/UnionFind.h
+Edge.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Edge.h
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/LazyPrimMST.h
 vector
 -
@@ -76,17 +88,21 @@ cassert
 Edge.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Edge.h
 
-/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/main_performance.cpp
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/UnionFind.h
+iostream
+-
+cassert
+-
+
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/main.cpp
 iostream
 -
 iomanip
 -
 vector
 -
-ctime
--
-string
--
+Edge.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Edge.h
 DenseGraph.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/DenseGraph.h
 SparseGraph.h
@@ -97,4 +113,6 @@ LazyPrimMST.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/LazyPrimMST.h
 PrimMST.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/PrimMST.h
+KruskalMST.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/KruskalMST.h
 

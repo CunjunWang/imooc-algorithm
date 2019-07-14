@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/main_performance.cpp">
+		<Unit filename="/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/main.cpp">
 			<Option target="weighted_graph"/>
 		</Unit>
 		<Unit filename="/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/CMakeLists.txt">
