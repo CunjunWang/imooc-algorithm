@@ -44,9 +44,10 @@ public:
         mst.clear();
 
         // Lazy Prim
+        // O(E*lg(E))
         visit(0);
-        while (!priorityQueue.isEmpty()) {
-            Edge<Weight> e = priorityQueue.extractMin();
+        while (!priorityQueue.isEmpty()) { // 执行E次
+            Edge<Weight> e = priorityQueue.extractMin(); // O(lg(E))
             if (marked[e.v()] == marked[e.w()]) {
                 // 若边的两个端点的颜色相同，不是横切边，跳过
                 continue;
@@ -55,7 +56,7 @@ public:
             mst.push_back(e);
 
             if (!marked[e.v()]) {
-                visit(e.v());
+                visit(e.v()); // O(lg(E))
             } else {
                 visit(e.w());
             }

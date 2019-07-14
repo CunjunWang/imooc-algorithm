@@ -123,32 +123,32 @@ weighted_graph/fast:
 	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/build
 .PHONY : weighted_graph/fast
 
-main.o: main.cpp.o
+main_performance.o: main_performance.cpp.o
 
-.PHONY : main.o
+.PHONY : main_performance.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main.cpp.o
-.PHONY : main.cpp.o
+main_performance.cpp.o:
+	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main_performance.cpp.o
+.PHONY : main_performance.cpp.o
 
-main.i: main.cpp.i
+main_performance.i: main_performance.cpp.i
 
-.PHONY : main.i
+.PHONY : main_performance.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main.cpp.i
-.PHONY : main.cpp.i
+main_performance.cpp.i:
+	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main_performance.cpp.i
+.PHONY : main_performance.cpp.i
 
-main.s: main.cpp.s
+main_performance.s: main_performance.cpp.s
 
-.PHONY : main.s
+.PHONY : main_performance.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main.cpp.s
-.PHONY : main.cpp.s
+main_performance.cpp.s:
+	$(MAKE) -f CMakeFiles/weighted_graph.dir/build.make CMakeFiles/weighted_graph.dir/main_performance.cpp.s
+.PHONY : main_performance.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... weighted_graph"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... main_performance.o"
+	@echo "... main_performance.i"
+	@echo "... main_performance.s"
 .PHONY : help
 
 

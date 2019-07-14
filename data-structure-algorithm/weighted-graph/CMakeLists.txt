@@ -3,4 +3,4 @@ project(weighted_graph)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(weighted_graph main.cpp)
+add_executable(weighted_graph main_performance.cpp)
