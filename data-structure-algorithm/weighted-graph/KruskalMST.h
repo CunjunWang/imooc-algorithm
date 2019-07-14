@@ -5,6 +5,7 @@
 // Kruskal 算法生成 MST
 // Greedy Algorithm
 // 用Union Find作为辅助结构判断两个node是否已经相连
+// O(E*log(E))
 
 #ifndef WEIGHTED_GRAPH_KRUSKALMST_H
 #define WEIGHTED_GRAPH_KRUSKALMST_H
@@ -14,6 +15,7 @@
 #include "MinHeap.h"
 #include "UnionFind.h"
 #include "Edge.h"
+
 
 using namespace std;
 

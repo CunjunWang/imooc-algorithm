@@ -4,6 +4,9 @@
 
 using namespace std;
 
+// selection sort
+// O(n^2)
+
 template<typename T>
 void selectionSort(T arr[], int n) {
     for (int i = 0; i < n; i++) {
