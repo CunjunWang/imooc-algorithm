@@ -9,6 +9,7 @@
 #include "PrimMST.h"
 #include "KruskalMST.h"
 #include "Dijkstra.h"
+#include "BellmanFord.h"
 
 using namespace std;
 
@@ -72,18 +73,57 @@ int main() {
 
 // ================ test for Dijkstra ==============
 
-    string fileName = "testDijG1.txt";
+//    string fileName = "testDijG1.txt";
+//    int V = 5;
+//
+//    SparseGraph<int> g = SparseGraph<int>(V, true);
+//    ReadGraph<SparseGraph<int>, int> readGraph(g, fileName);
+//
+//    cout << "Test Dijkstra: " << endl << endl;
+//    Dijkstra<SparseGraph<int>, int> dijkstra(g, 0);
+//    for (int i = 1; i < V; i++) {
+//        cout << "Shortest path to " << i << " : " << dijkstra.shortestPathTo(i) << endl;
+//        dijkstra.showPath(i);
+//        cout << "-----------" << endl;
+//    }
+
+// ================ test for Bellman-Ford ==============
+
+    string fileName = "testBellG2.txt";
     int V = 5;
 
     SparseGraph<int> g = SparseGraph<int>(V, true);
     ReadGraph<SparseGraph<int>, int> readGraph(g, fileName);
 
-    cout << "Test Dijkstra: " << endl << endl;
-    Dijkstra<SparseGraph<int>, int> dijkstra(g, 0);
-    for (int i = 1; i < V; i++) {
-        cout << "Shortest path to " << i << " : " << dijkstra.shortestPathTo(i) << endl;
-        dijkstra.showPath(i);
-        cout << "-----------" << endl;
+    cout << "Test Bellman-Ford: " << endl << endl;
+    BellmanFord<SparseGraph<int>, int> bellmanFord(g, 0);
+    if (bellmanFord.negativeCycle()) {
+        cout << "The graph contains nagative cycle!" << endl;
+    } else {
+        for (int i = 1; i < V; i++) {
+            cout << "Shortest path to " << i << " : " << bellmanFord.shortestPathTo(i) << endl;
+            bellmanFord.showPath(i);
+            cout << "-------------" << endl;
+        }
+    }
+
+    cout << endl;
+
+    fileName = "testG_negative_circle.txt";
+
+    SparseGraph<int> g2 = SparseGraph<int>(V, true);
+    ReadGraph<SparseGraph<int>, int> readGraph2(g2, fileName);
+
+    cout << "Test Bellman-Ford negative cycle: " << endl << endl;
+    BellmanFord<SparseGraph<int>, int> bellmanFord2(g2, 0);
+    if (bellmanFord2.negativeCycle()) {
+        cout << "The graph contains nagative cycle!" << endl;
+    } else {
+        for (int i = 1; i < V; i++) {
+            cout << "Shortest path to " << i << " : " << bellmanFord2.shortestPathTo(i) << endl;
+            bellmanFord2.showPath(i);
+            cout << "-------------" << endl;
+        }
     }
 
     return 0;

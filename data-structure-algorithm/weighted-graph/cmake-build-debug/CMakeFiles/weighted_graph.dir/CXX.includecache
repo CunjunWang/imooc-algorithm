@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/BellmanFord.h
+cassert
+-
+stack
+-
+vector
+-
+Edge.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Edge.h
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/DenseGraph.h
 iostream
 -
@@ -129,4 +139,6 @@ KruskalMST.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/KruskalMST.h
 Dijkstra.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/Dijkstra.h
+BellmanFord.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/weighted-graph/BellmanFord.h
 
