@@ -33,13 +33,24 @@ void __merge(T arr[], int l, int mid, int r) {
 // 对arr[l...r]的范围进行排序
 template<typename T>
 void __mergeSort(T arr[], int l, int r) {
-    if (l >= r) {
+
+    // 元素较少时，整个arr近乎有序的概率较大
+    // 此时使用insertion sort效率较高
+    if (r - l <= 15) {
+        insertionSort(arr, l, r);
         return;
     }
+//    if (l >= r) {
+//        return;
+//    }
     int mid = l + (r - l) / 2;
     __mergeSort(arr, l, mid);
     __mergeSort(arr, mid + 1, r);
-    __merge(arr, l, mid, r);
+
+    // 中间两个元素判断是否需要merge
+    if (arr[mid] > arr[mid + 1]) {
+        __merge(arr, l, mid, r);
+    }
 }
 
 template<typename T>
@@ -49,7 +60,7 @@ void mergeSort(T arr[], int n) {
 }
 
 int main() {
-    int n = 500000;
+    int n = 50000;
 
     cout << "Test for random array, size = " << n << ", random range [0, " << n << "]" << endl;
     int *arr1 = SortTestHelper::generateRandomArray(n, 0, n);
