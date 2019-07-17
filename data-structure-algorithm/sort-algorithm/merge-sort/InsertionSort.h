@@ -1,10 +1,10 @@
 //
-// Created by liuyubobobo on 7/16/16.
+// Created by 王存俊 on 2019-07-17.
 //
 
 
-#ifndef INC_02_MERGE_SORT_INSERTIONSORT_H
-#define INC_02_MERGE_SORT_INSERTIONSORT_H
+#ifndef MERGE_SORT_INSERTIONSORT_H
+#define MERGE_SORT_INSERTIONSORT_H
 
 #include <iostream>
 #include <algorithm>
@@ -42,4 +42,4 @@ void insertionSort(T arr[], int l, int r) {
     return;
 }
 
-#endif //INC_02_MERGE_SORT_INSERTIONSORT_H
+#endif //MERGE_SORT_INSERTIONSORT_H

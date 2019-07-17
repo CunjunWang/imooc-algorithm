@@ -1,8 +1,19 @@
 #include <iostream>
+#include <algorithm>
 #include "InsertionSort.h"
 #include "SortTestHelper.h"
 
 using namespace std;
+
+// 自底向上merge sort
+template<typename T>
+void mergeSortBU(T arr[], int n) {
+    for (int size = 1; size <= n; size += size) {
+        for (int i = 0; i + size < n; i += size + size) {
+            __merge(arr, i, i + size - 1, min(i + size + size - 1, n - 1));
+        }
+    }
+}
 
 // 对arr[l...mid]和arr[mid+1...r]进行归并
 template<typename T>
