@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/MergeSort.h
+iostream
+-
+
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/SortTestHelper.h
+iostream
+-
+cassert
+-
+
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/main.cpp
+iostream
+-
+algorithm
+-
+MergeSort.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/MergeSort.h
+SortTestHelper.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/SortTestHelper.h
+
