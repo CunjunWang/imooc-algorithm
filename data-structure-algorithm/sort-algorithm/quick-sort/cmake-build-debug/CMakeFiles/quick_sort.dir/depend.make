@@ -3,6 +3,7 @@
 
 CMakeFiles/quick_sort.dir/main.cpp.o: ../InsertionSort.h
 CMakeFiles/quick_sort.dir/main.cpp.o: ../MergeSort.h
+CMakeFiles/quick_sort.dir/main.cpp.o: ../QuickSort.h
 CMakeFiles/quick_sort.dir/main.cpp.o: ../SortTestHelper.h
 CMakeFiles/quick_sort.dir/main.cpp.o: ../main.cpp
 

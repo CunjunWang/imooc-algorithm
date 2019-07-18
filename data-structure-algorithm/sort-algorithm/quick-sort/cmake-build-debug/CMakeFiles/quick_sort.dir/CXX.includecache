@@ -16,6 +16,18 @@ algorithm
 iostream
 -
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/QuickSort.h
+iostream
+-
+algorithm
+-
+MergeSort.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/MergeSort.h
+InsertionSort.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/InsertionSort.h
+SortTestHelper.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/SortTestHelper.h
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/SortTestHelper.h
 iostream
 -
@@ -29,6 +41,8 @@ algorithm
 -
 MergeSort.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/MergeSort.h
+QuickSort.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/QuickSort.h
 InsertionSort.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/sort-algorithm/quick-sort/InsertionSort.h
 SortTestHelper.h
