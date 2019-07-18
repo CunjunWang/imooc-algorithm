@@ -2,52 +2,54 @@
 #include <algorithm>
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include "QuickSortTwoWay.h"
 #include "InsertionSort.h"
 #include "SortTestHelper.h"
 
 using namespace std;
 
+// 三路快速排序
+// 把arr[l...r]分为 <v; =v; >v 三部分
+// 递归对 <v, >v 进行三路快速排序
 template<typename T>
-int __partitionTwoWay(T arr[], int l, int r) {
-    swap(arr[l], arr[rand() % (r - l + 1) + l]);
-    T v = arr[l];
-
-    // i: arr[l+1...i) <= v; arr(j...r] >= v
-    int i = l + 1, j = r;
-    while (true) {
-        while (i <= r && arr[i] < v) {
-            i++;
-        }
-        while (j >= l + 1 && arr[j] > v) {
-            j--;
-        }
-        if (i > j) {
-            break;
-        }
-        swap(arr[i], arr[j]);
-        i++;
-        j--;
-    }
-
-    swap(arr[l], arr[j]);
-    return j;
-}
-
-template<typename T>
-void __quickSortTwoWay(T arr[], int l, int r) {
+void __quickSortThreeWay(T arr[], int l, int r) {
     if (r - l <= 15) {
         insertionSort(arr, l, r);
         return;
     }
-    int p = __partitionTwoWay(arr, l, r);
-    __quickSortTwoWay(arr, l, p - 1);
-    __quickSortTwoWay(arr, p + 1, r);
+
+    // partition
+    swap(arr[l], arr[rand() % (r - l + 1) + l]);
+    T v = arr[l];
+
+    int lt = l; // arr[l+1...lt] < v;
+    int gt = r + 1; // arr[gt...r] > v;
+    int i = l + 1; // arr[lt+1...i) = v;
+
+    while (i < gt) {
+        if (arr[i] < v) {
+            swap(arr[i], arr[lt + 1]);
+            lt++;
+            i++;
+        } else if (arr[i] > v) {
+            swap(arr[i], arr[gt - 1]);
+            gt--;
+        } else { // arr[i] == v;
+            i++;
+        }
+    }
+
+    swap(arr[l], arr[lt]);
+
+    __quickSortThreeWay(arr, l, lt - 1);
+    __quickSortThreeWay(arr, gt, r);
+
 }
 
 template<typename T>
-void quickSortTwoWay(T arr[], int n) {
+void quickSortThreeWay(T arr[], int n) {
     srand(time(NULL));
-    __quickSortTwoWay(arr, 0, n - 1);
+    __quickSortThreeWay(arr, 0, n - 1);
 }
 
 int main() {
@@ -58,14 +60,17 @@ int main() {
     int *arr1 = SortTestHelper::generateRandomArray(n, 0, n);
     int *arr2 = SortTestHelper::copyIntArray(arr1, n);
     int *arr3 = SortTestHelper::copyIntArray(arr1, n);
+    int *arr4 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Merge Sort", mergeSort, arr1, n);
     SortTestHelper::testSort("Quick Sort", quickSort, arr2, n);
     SortTestHelper::testSort("Quick Sort Two Way", quickSortTwoWay, arr3, n);
+    SortTestHelper::testSort("Quick Sort Three Way", quickSortThreeWay, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
     delete[] arr3;
+    delete[] arr4;
 
     cout << endl;
 
@@ -83,14 +88,17 @@ int main() {
     arr1 = SortTestHelper::generateNearlyOrderedArray(n, swapTimes);
     arr2 = SortTestHelper::copyIntArray(arr1, n);
     arr3 = SortTestHelper::copyIntArray(arr1, n);
+    arr4 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Merge Sort", mergeSort, arr1, n);
     SortTestHelper::testSort("Quick Sort", quickSort, arr2, n);
     SortTestHelper::testSort("Quick Sort Two Way", quickSortTwoWay, arr3, n);
+    SortTestHelper::testSort("Quick Sort Three Way", quickSortThreeWay, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
     delete[] arr3;
+    delete[] arr4;
 
     cout << endl;
 
@@ -103,15 +111,17 @@ int main() {
     arr1 = SortTestHelper::generateRandomArray(n, 0, range);
     arr2 = SortTestHelper::copyIntArray(arr1, n);
     arr3 = SortTestHelper::copyIntArray(arr1, n);
+    arr4 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Merge Sort", mergeSort, arr1, n);
     SortTestHelper::testSort("Quick Sort", quickSort, arr2, n);
     SortTestHelper::testSort("Quick Sort Two Way", quickSortTwoWay, arr3, n);
+    SortTestHelper::testSort("Quick Sort Three Way", quickSortThreeWay, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
     delete[] arr3;
-
+    delete[] arr4;
 
     return 0;
 }
