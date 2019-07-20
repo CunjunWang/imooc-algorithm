@@ -23,6 +23,23 @@ private:
         }
     }
 
+    void shiftDown(int k) {
+        // k节点必须有child
+        // 由于heap是完全二叉树, 只要判断是否有left child
+        // left child的index是2k
+        while (2 * k <= count) {
+            int j = 2 * k;
+            if (j + 1 <= count && data[j + 1] > data[j]) {
+                j += 1;
+            }
+            if (data[k] >= data[j]) {
+                break;
+            }
+            swap(data[k], data[j]);
+            k = j;
+        }
+    }
+
     void putNumberInLine(int num, string &line, int index_cur_level, int cur_tree_width, bool isLeft) {
 
         int sub_tree_width = (cur_tree_width - 1) / 2;
@@ -77,6 +94,15 @@ public:
         data[count + 1] = item;
         count++;
         shiftUp(count);
+    }
+
+    Item extractMax() {
+        assert(count > 0);
+        Item ret = data[1];
+        swap(data[1], data[count]);
+        count--;
+        shiftDown(1);
+        return ret;
     }
 
     // 以树状打印整个堆结构
@@ -149,7 +175,10 @@ int main() {
     for (int i = 0; i < 50; i++) {
         maxHeap.insert(rand() % 100);
     }
-    maxHeap.testPrint();
+    while (!maxHeap.isEmpty()) {
+        cout << maxHeap.extractMax() << " ";
+    }
+    cout << endl;
 
     return 0;
 }
