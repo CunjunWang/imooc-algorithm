@@ -14,6 +14,12 @@ cassert
 cmath
 -
 
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/heap/HeapSort.h
+iostream
+-
+algorithm
+-
+
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/heap/InsertionSort.h
 iostream
 -
@@ -71,6 +77,8 @@ algorithm
 -
 Heap.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/heap/Heap.h
+HeapSort.h
+/Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/heap/HeapSort.h
 MergeSort.h
 /Users/CunjunWang/Desktop/Algorithm/imooc-algorithm/data-structure-algorithm/heap/MergeSort.h
 InsertionSort.h
