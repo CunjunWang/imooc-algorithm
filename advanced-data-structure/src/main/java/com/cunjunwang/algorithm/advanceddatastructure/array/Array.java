@@ -4,9 +4,9 @@ package com.cunjunwang.algorithm.advanceddatastructure.array;
  * 自定义数组类, 基于java自带的静态数组实现动态数组
  * Created by CunjunWang on 2019-07-25.
  */
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
 
     private int size;
 
@@ -17,7 +17,8 @@ public class Array {
      * @param capacity 容量
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        // java不支持直接new 泛型数组
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -60,7 +61,7 @@ public class Array {
      *
      * @param e 添加元素
      */
-    public void addLast(int e) {
+    public void addLast(E e) {
 //        if (size == data.length) {
 //            throw new IllegalArgumentException("AddLast failed, array is already full");
 //        }
@@ -75,7 +76,7 @@ public class Array {
      *
      * @param e 添加元素
      */
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         add(0, e);
     }
 
@@ -86,7 +87,7 @@ public class Array {
      * @param index 位置
      * @param e     添加元素
      */
-    public void add(int index, int e) {
+    public void add(int index, E e) {
         if (size == data.length) {
             throw new IllegalArgumentException("AddLast failed, array is already full");
         }
@@ -106,7 +107,7 @@ public class Array {
      * @param index 索引
      * @return 元素
      */
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
         }
@@ -119,7 +120,7 @@ public class Array {
      * @param index 索引
      * @param e     元素
      */
-    public void set(int index, int e) {
+    public void set(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
         }
@@ -132,9 +133,9 @@ public class Array {
      * @param e 元素
      * @return 是否存在
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -148,9 +149,9 @@ public class Array {
      * @param e 元素
      * @return 索引
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -163,18 +164,17 @@ public class Array {
      * @param index 索引
      * @return 返回删除的元素
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
         }
-        int item = data[index];
+        E item = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
+        data[size] = null; // loitering objects != memory leak
         return item;
-        // 不用处理当前size
-        // 因为用户根本无法取到data[size]
     }
 
     /**
@@ -182,7 +182,7 @@ public class Array {
      *
      * @return 元素值
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -191,7 +191,7 @@ public class Array {
      *
      * @return 元素值
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -201,7 +201,7 @@ public class Array {
      * @param e 要删除的元素
      * @return 是否已删除
      */
-    public boolean removeElement(int e) {
+    public boolean removeElement(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
