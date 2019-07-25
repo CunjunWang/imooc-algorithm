@@ -3,6 +3,8 @@
 #include <string>
 #include "FileOps.h"
 #include "SequenceST.h"
+#include <queue>
+#include <cassert>
 
 using namespace std;
 
@@ -20,6 +22,13 @@ private:
             this->key = key;
             this->value = value;
             this->left = this->right = NULL;
+        }
+
+        Node(Node *node) {
+            this->key = node->key;
+            this->value = node->value;
+            this->left = node->left;
+            this->right = node->right;
         }
     };
 
@@ -70,6 +79,56 @@ public:
     // 后序遍历
     void postOrder() {
         postOrder(root);
+    }
+
+    // 广度优先, 层序
+    void levelOrder() {
+        queue<Node *> q;
+        q.push(root);
+        while (!q.empty()) {
+            Node *node = q.front();
+            q.pop();
+            cout << node->key << endl;
+            if (node->left) {
+                q.push(node->left);
+            }
+            if (node->right) {
+                q.push(node->right);
+            }
+        }
+    }
+
+    // 寻找最小的键值
+    Key minimum() {
+        assert(count != 0);
+        Node *minNode = minimum(root);
+        return minNode->key;
+    }
+
+    // 寻找最大的键值
+    Key maximum() {
+        assert(count != 0);
+        Node *maxNode = maximum(root);
+        return maxNode->key;
+    }
+
+    // 删除最小节点
+    void removeMin() {
+        if (root) {
+            root = removeMin(root);
+        }
+    }
+
+    // 删除最大节点
+    void removeMax() {
+        if (root) {
+            root = removeMax(root);
+        }
+    }
+
+    // 删除key节点
+    void remove(Key key) {
+        root = remove(root, key);
     }
 
 private:
@@ -148,6 +207,81 @@ private:
             destroy(node->right);
             delete node;
             count--;
+        }
+    }
+
+    Node *minimum(Node *node) {
+        if (node->left == NULL) {
+            return node;
+        }
+        return minimum(node->left);
+    }
+
+    Node *maximum(Node *node) {
+        if (node->left == NULL) {
+            return node;
+        }
+        return maximum(node->right);
+    }
+
+    Node *removeMin(Node *node) {
+        if (node->left == NULL) {
+            Node *rightNode = node->right;
+            delete node;
+            count--;
+            return rightNode;
+        }
+        node->left = removeMin(node->left);
+        return node;
+    }
+
+    Node *removeMax(Node *node) {
+        if (node->right == NULL) {
+            Node *leftNode = node->left;
+            delete node;
+            count--;
+            return leftNode;
+        }
+        node->right = removeMax(node->right);
+        return node;
+    }
+
+    // Hibbard Deletion
+    // O(lg(n)), 其实就是找到这个node的时间
+    Node *remove(Node *node, Key key) {
+        if (node == NULL) {
+            return NULL;
+        }
+        if (key < node->key) {
+            node->left = remove(node->left, key);
+            return node;
+        } else if (key > node->key) {
+            node->right = remove(node->right, key);
+            return node;
+        } else {
+            if (node->left == NULL) {
+                Node *rightNode = node->right;
+                delete node;
+                count--;
+                return rightNode;
+            } else if (node->right == NULL) {
+                Node *leftNode = node->left;
+                delete node;
+                count--;
+                return leftNode;
+            } else {
+                // 为什么要new:
+                // cpp中的陷阱: successor指向的是node->right的最小节点
+                // 但是之后removeMin把node->right中的最小节点删除了
+                // 导致successor指针指向了空, 因此要事先复制一份
+                Node *successor = new Node(minimum(node->right));
+                count++;
+                successor->right = removeMin(node->right);
+                successor->left = node->left;
+                delete node;
+                count--;
+                return successor;
+            }
         }
     }
 
