@@ -100,4 +100,48 @@ public class Array {
         size++;
     }
 
+    /**
+     * 获取索引为index的元素
+     *
+     * @param index 索引
+     * @return 元素
+     */
+    public int get(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
+        }
+        return data[index];
+    }
+
+    /**
+     * 修改索引为index的元素为e
+     *
+     * @param index 索引
+     * @param e     元素
+     */
+    public void set(int index, int e) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
+        }
+        data[index] = e;
+    }
+
+    /**
+     * toString
+     */
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("Array: size = %d, capacity = %d\n", size, data.length));
+        result.append("[");
+        for (int i = 0; i < size; i++) {
+            result.append(data[i]);
+            if (i != size - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
+    }
+
 }
