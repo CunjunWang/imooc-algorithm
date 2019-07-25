@@ -58,6 +58,7 @@ public class Array<E> {
 
     /**
      * 向数组最后添加元素e
+     * O(1)
      *
      * @param e 添加元素
      */
@@ -73,6 +74,7 @@ public class Array<E> {
 
     /**
      * 向数组头添加元素e
+     * O(n)
      *
      * @param e 添加元素
      */
@@ -83,6 +85,7 @@ public class Array<E> {
 
     /**
      * 向指定位置index最后添加元素e
+     * 平均复杂度: O(n)
      *
      * @param index 位置
      * @param e     添加元素
@@ -103,6 +106,7 @@ public class Array<E> {
 
     /**
      * 获取索引为index的元素
+     * O(1)
      *
      * @param index 索引
      * @return 元素
@@ -116,6 +120,7 @@ public class Array<E> {
 
     /**
      * 修改索引为index的元素为e
+     * O(1)
      *
      * @param index 索引
      * @param e     元素
@@ -129,6 +134,7 @@ public class Array<E> {
 
     /**
      * 判断数组中是否存在e
+     * O(n)
      *
      * @param e 元素
      * @return 是否存在
@@ -145,6 +151,7 @@ public class Array<E> {
 
     /**
      * 找到e在数组中的索引
+     * O(n)
      *
      * @param e 元素
      * @return 索引
@@ -160,6 +167,7 @@ public class Array<E> {
 
     /**
      * 删掉index位置的元素
+     * O(n)
      *
      * @param index 索引
      * @return 返回删除的元素
@@ -174,7 +182,9 @@ public class Array<E> {
         }
         size--;
         data[size] = null; // loitering objects != memory leak
-        if (size <= data.length / 2) {
+        // 最开始为size <= data.length / 2,
+        // 为了避免均摊复杂度震荡, 改为Lazy策略而不是Eager策略
+        if (size <= data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
         return item;
@@ -182,6 +192,7 @@ public class Array<E> {
 
     /**
      * 删除第一个元素
+     * O(n)
      *
      * @return 元素值
      */
@@ -191,6 +202,7 @@ public class Array<E> {
 
     /**
      * 删除最后一个元素
+     * O(1)
      *
      * @return 元素值
      */
@@ -200,6 +212,7 @@ public class Array<E> {
 
     /**
      * 删除指定元素, 只删除一个
+     * O(n)
      *
      * @param e 要删除的元素
      * @return 是否已删除
@@ -232,7 +245,8 @@ public class Array<E> {
     }
 
     /**
-     * 扩容
+     * 扩容、缩容
+     * O(n)
      */
     private void resize(int newCapacity) {
         E[] newData = (E[]) new Object[newCapacity];
