@@ -127,6 +127,90 @@ public class Array {
     }
 
     /**
+     * 判断数组中是否存在e
+     *
+     * @param e 元素
+     * @return 是否存在
+     */
+    public boolean contains(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 找到e在数组中的索引
+     *
+     * @param e 元素
+     * @return 索引
+     */
+    public int find(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 删掉index位置的元素
+     *
+     * @param index 索引
+     * @return 返回删除的元素
+     */
+    public int remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
+        }
+        int item = data[index];
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return item;
+        // 不用处理当前size
+        // 因为用户根本无法取到data[size]
+    }
+
+    /**
+     * 删除第一个元素
+     *
+     * @return 元素值
+     */
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除最后一个元素
+     *
+     * @return 元素值
+     */
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
+     * 删除指定元素, 只删除一个
+     *
+     * @param e 要删除的元素
+     * @return 是否已删除
+     */
+    public boolean removeElement(int e) {
+        int index = find(e);
+        if (index != -1) {
+            remove(index);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * toString
      */
     @Override
