@@ -22,23 +22,30 @@ public class Test {
 //        for (int score : scores) {
 //            System.out.println(score);
 //        }
-        Array arr = new Array(20);
-        for (int i = 0; i < 10; i++) {
-            arr.addLast(i);
-        }
+//        Array<Integer> arr = new Array<>(20);
+//        for (int i = 0; i < 10; i++) {
+//            arr.addLast(i);
+//        }
+//        System.out.println(arr);
+//
+//        arr.add(1, 100);
+//        System.out.println(arr);
+//
+//
+//        arr.addFirst(-1);
+//        System.out.println(arr);
+//
+//        int i = arr.get(0);
+//        System.out.println(i);
+//
+//        arr.set(5, 10);
+//        System.out.println(arr);
+
+        Array<Student> arr = new Array<>();
+        arr.addLast(new Student("Alice", 100));
+        arr.addLast(new Student("Bob", 66));
+        arr.addLast(new Student("Charlie", 88));
         System.out.println(arr);
 
-        arr.add(1, 100);
-        System.out.println(arr);
-
-
-        arr.addFirst(-1);
-        System.out.println(arr);
-
-        int i = arr.get(0);
-        System.out.println(i);
-
-        arr.set(5, 10);
-        System.out.println(arr);
     }
 }

@@ -88,11 +88,11 @@ public class Array<E> {
      * @param e     添加元素
      */
     public void add(int index, E e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("AddLast failed, array is already full");
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
+        }
+        if (size == data.length) {
+            resize(2 * data.length);
         }
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
@@ -174,6 +174,9 @@ public class Array<E> {
         }
         size--;
         data[size] = null; // loitering objects != memory leak
+        if (size <= data.length / 2) {
+            resize(data.length / 2);
+        }
         return item;
     }
 
@@ -226,6 +229,17 @@ public class Array<E> {
         }
         result.append("]");
         return result.toString();
+    }
+
+    /**
+     * 扩容
+     */
+    private void resize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
 }
