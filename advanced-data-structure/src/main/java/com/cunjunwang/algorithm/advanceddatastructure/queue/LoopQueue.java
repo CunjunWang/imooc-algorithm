@@ -32,6 +32,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     /**
      * 获得容积
+     * O(1)
      *
      * @return 容积
      */
@@ -42,6 +43,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     /**
      * 队列大小
+     * O(1)
      *
      * @return 元素个数
      */
@@ -52,6 +54,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     /**
      * 是否为空
+     * O(1)
      *
      * @return 是否为空
      */
@@ -62,6 +65,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     /**
      * 入队
+     * 均摊O(1)
      *
      * @param e 元素
      */
@@ -77,6 +81,7 @@ public class LoopQueue<E> implements Queue<E> {
 
     /**
      * 出队
+     * 均摊O(1)
      *
      * @return 队首元素
      */
