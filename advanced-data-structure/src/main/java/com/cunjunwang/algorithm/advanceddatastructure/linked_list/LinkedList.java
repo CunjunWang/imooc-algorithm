@@ -111,5 +111,123 @@ public class LinkedList<E> {
         add(size, e);
     }
 
+    /**
+     * 在指定索引处(0-based)获取
+     *
+     * @param index 索引
+     */
+    public E get(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed, illegal index");
+        }
+        Node current = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.e;
+    }
+
+    /**
+     * 获取第一个元素
+     *
+     * @return 第一个元素
+     */
+    public E getFirst() {
+        return get(0);
+    }
+
+    /**
+     * 获取最后一个元素
+     *
+     * @return 最后一个元素
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    /**
+     * 在index位置设置元素
+     *
+     * @param index 位置
+     * @param e     元素
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed, illegal index");
+        }
+        Node current = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.e = e;
+    }
+
+    /**
+     * 判断链表是否存在元素
+     *
+     * @param e 元素
+     * @return 是否存在
+     */
+    public boolean contains(E e) {
+        Node current = dummyHead.next;
+        while (current != null) {
+            if (current.e.equals(e)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /**
+     * 在指定索引处(0-based)删除
+     *
+     * @param index 索引
+     * @return 删除的元素
+     */
+    public E remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed, illegal index");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node delNode = prev.next;
+        prev.next = delNode.next;
+        delNode.next = null;
+        size--;
+        return delNode.e;
+    }
+
+    /**
+     * 删除头部元素
+     *
+     * @return 头部元素
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除尾部元素
+     *
+     * @return 尾部元素
+     */
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        Node current = dummyHead.next;
+        while (current != null) {
+            result.append(current).append(" -> ");
+            current = current.next;
+        }
+        result.append("NULL");
+        return result.toString();
+    }
 
 }
