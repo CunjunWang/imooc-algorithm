@@ -2,15 +2,14 @@ package com.cunjunwang.algorithm.advanceddatastructure.linked_list;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
 
 /**
+ * linked list with dummy head
  * Created by CunjunWang on 2019-07-27.
  */
 public class LinkedList<E> {
 
     @Data
-    @ToString
     @AllArgsConstructor
     private class Node {
         public E e;
@@ -22,6 +21,11 @@ public class LinkedList<E> {
 
         public Node() {
             this(null, null);
+        }
+
+        @Override
+        public String toString() {
+            return e.toString();
         }
     }
 

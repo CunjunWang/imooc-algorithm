@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by CunjunWang on 2019-07-27.
  */
-public class Test {
+public class TestQueue {
 
     /**
      * 测试使用q运存operationCount这么多次操作需要的时间, 单位为秒
@@ -32,8 +32,9 @@ public class Test {
 
     public static void main(String[] args) {
 
-        // Array Queue, time: 6.778231508 s.
-        // Loop Queue, time: 0.019274828 s.
+        // Array Queue, time: 5.888052848 s.
+        // Loop Queue, time: 0.030927702 s.
+        // Linked List Queue, time: 0.022387221 s.
         // 差距主要在dequeue上, Array Queue为O(n)的dequeue操作
 
         int operationCount = 100000;
@@ -44,5 +45,9 @@ public class Test {
         LoopQueue<Integer> loopQueue = new LoopQueue<>();
         double time2 = testQueue(loopQueue, operationCount);
         System.out.println("Loop Queue, time: " + time2 + " s.");
+
+        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+        double time3 = testQueue(linkedListQueue, operationCount);
+        System.out.println("Linked List Queue, time: " + time3 + " s.");
     }
 }

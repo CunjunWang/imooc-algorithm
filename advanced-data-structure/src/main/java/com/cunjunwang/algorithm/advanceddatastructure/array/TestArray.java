@@ -3,7 +3,7 @@ package com.cunjunwang.algorithm.advanceddatastructure.array;
 /**
  * Created by CunjunWang on 2019-07-25.
  */
-public class Test {
+public class TestArray {
 
     public static void main(String[] args) {
 //

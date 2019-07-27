@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by CunjunWang on 2019-07-25.
  */
-public class Test {
+public class TestStack {
 
     /**
      * 测试使用stack运存operationCount这么多次操作需要的时间, 单位为秒
