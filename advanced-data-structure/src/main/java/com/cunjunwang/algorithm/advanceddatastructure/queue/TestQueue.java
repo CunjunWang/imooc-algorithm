@@ -38,6 +38,7 @@ public class TestQueue {
         // 差距主要在dequeue上, Array Queue为O(n)的dequeue操作
 
         int operationCount = 100000;
+
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
         double time1 = testQueue(arrayQueue, operationCount);
         System.out.println("Array Queue, time: " + time1 + " s.");
