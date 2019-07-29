@@ -49,4 +49,33 @@ public class BST<E extends Comparable<E>> {
         return size == 0;
     }
 
+    /**
+     * 向BST添加元素
+     *
+     * @param e 元素
+     */
+    public void add(E e) {
+        root = add(root, e);
+    }
+
+    /**
+     * 向以node为root的BST添加元素
+     *
+     * @param node node
+     * @param e    元素
+     * @return 插入新节点后bst的root
+     */
+    private Node add(Node node, E e) {
+        if (node == null) {
+            size++;
+            return new Node(e);
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = add(node.left, e);
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = add(node.right, e);
+        }
+        return node;
+    }
+
 }
