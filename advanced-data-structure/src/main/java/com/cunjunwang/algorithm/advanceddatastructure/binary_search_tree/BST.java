@@ -59,6 +59,16 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
+     * BST是否包含e
+     *
+     * @param e 元素
+     * @return 是否包含
+     */
+    public boolean contains(E e) {
+        return contains(root, e);
+    }
+
+    /**
      * 向以node为root的BST添加元素
      *
      * @param node node
@@ -77,5 +87,27 @@ public class BST<E extends Comparable<E>> {
         }
         return node;
     }
+
+    /**
+     * 以node为根的BST是否包含e
+     *
+     * @param node 节点
+     * @param e    元素
+     * @return 是否包含
+     */
+    private boolean contains(Node node, E e) {
+        if (node == null) {
+            return false;
+        }
+        if (e.compareTo(node.e) == 0) {
+            return true;
+        } else if (e.compareTo(node.e) < 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
+        }
+    }
+
+
 
 }
