@@ -69,6 +69,27 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
+     * 前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    /**
+     * 中序遍历
+     */
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    /**
+     * 后序遍历
+     */
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    /**
      * 向以node为root的BST添加元素
      *
      * @param node node
@@ -108,6 +129,78 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * 从node开始前序遍历
+     *
+     * @param node 节点
+     */
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
 
+    /**
+     * 从node开始中序遍历
+     *
+     * @param node 节点
+     */
+    private void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
+    }
+
+    /**
+     * 从node开始后序遍历
+     *
+     * @param node 节点
+     */
+    private void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        generateBstString(root, 0, result);
+        return result.toString();
+    }
+
+    /**
+     * 生成bst字符串
+     *
+     * @param node
+     * @param depth
+     * @param result
+     */
+    private void generateBstString(Node node, int depth, StringBuilder result) {
+        if (node == null) {
+            result.append(generateDepthString(depth) + "null\n");
+            return;
+        }
+        result.append(generateDepthString(depth) + node.e + "\n");
+        generateBstString(node.left, depth + 1, result);
+        generateBstString(node.right, depth + 1, result);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            result.append("--");
+        }
+        return result.toString();
+    }
 
 }
