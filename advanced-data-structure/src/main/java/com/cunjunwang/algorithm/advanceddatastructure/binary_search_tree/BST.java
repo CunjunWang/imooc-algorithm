@@ -2,6 +2,10 @@ package com.cunjunwang.algorithm.advanceddatastructure.binary_search_tree;
 
 import lombok.Data;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * Created by CunjunWang on 2019-07-29.
  */
@@ -76,6 +80,24 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
+     * 迭代前序遍历
+     */
+    public void preOrderIterative() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            System.out.println(current.e);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+    }
+
+    /**
      * 中序遍历
      */
     public void inOrder() {
@@ -87,6 +109,24 @@ public class BST<E extends Comparable<E>> {
      */
     public void postOrder() {
         postOrder(root);
+    }
+
+    /**
+     * 广度优先遍历
+     */
+    public void levelOrder() {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()) {
+            Node current = queue.remove();
+            System.out.println(current.e);
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
     }
 
     /**
