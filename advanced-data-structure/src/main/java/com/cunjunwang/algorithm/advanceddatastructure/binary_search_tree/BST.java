@@ -117,7 +117,7 @@ public class BST<E extends Comparable<E>> {
     public void levelOrder() {
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             Node current = queue.remove();
             System.out.println(current.e);
             if (current.left != null) {
@@ -127,6 +127,61 @@ public class BST<E extends Comparable<E>> {
                 queue.add(current.right);
             }
         }
+    }
+
+    /**
+     * 找到bst中的最小元素
+     *
+     * @return 最小元素
+     */
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return minimum(root).e;
+    }
+
+    /**
+     * 找到bst中的最大元素
+     *
+     * @return 最大元素
+     */
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return maximum(root).e;
+    }
+
+    /**
+     * 删除最小元素
+     *
+     * @return 最小元素
+     */
+    public E removeMinimum() {
+        E ret = minimum();
+        root = removeMinimum(root);
+        return ret;
+    }
+
+    /**
+     * 删除最大元素
+     *
+     * @return 最大元素
+     */
+    public E removeMaximum() {
+        E ret = maximum();
+        root = removeMaximum(root);
+        return ret;
+    }
+
+    /**
+     * 删除元素 - Hibbard deletion
+     *
+     * @param e 待删除的元素
+     */
+    public void remove(E e) {
+        root = remove(root, e);
     }
 
     /**
@@ -209,6 +264,104 @@ public class BST<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    /**
+     * 找到以node为根的bst中的最小元素
+     *
+     * @return 最小元素
+     */
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(root.left);
+    }
+
+    /**
+     * 找到以node为根的bst中的最大元素
+     *
+     * @return 最大元素
+     */
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximum(root.right);
+    }
+
+    /**
+     * 删除以node为根的bst的最小节点
+     *
+     * @param node 根
+     * @return 删除节点后新的bst的根
+     */
+    private Node removeMinimum(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        node.left = removeMinimum(node.left);
+        return node;
+    }
+
+    /**
+     * 删除以node为根的bst的最大节点
+     *
+     * @param node 根
+     * @return 删除节点后新的bst的根
+     */
+    private Node removeMaximum(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMaximum(node.right);
+        return node;
+    }
+
+    /**
+     * 删除以node为根的bst中值为e的节点
+     *
+     * @param node 根
+     * @param e    待删除的元素
+     * @return 删除节点后新的bst的根
+     */
+    private Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            Node successor = minimum(node.right);
+            successor.right = removeMinimum(node.right);
+            // size++;
+            successor.left = node.left;
+            node.left = node.right = null;
+            // size--;
+            return successor;
+        }
     }
 
     @Override
