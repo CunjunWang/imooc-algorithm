@@ -36,6 +36,7 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     /**
      * 添加元素, 不能有重复元素
+     * O(h) h = height
      *
      * @param e 待添加元素
      */
@@ -46,6 +47,7 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     /**
      * 删除元素
+     * O(h) h = height
      *
      * @param e 待删除元素
      */
@@ -56,6 +58,7 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     /**
      * 判断是否包含某元素
+     * O(h) h = height
      *
      * @param e 元素
      * @return 是否包含

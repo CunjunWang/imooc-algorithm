@@ -36,6 +36,7 @@ public class LinkedListSet<E> implements Set<E> {
 
     /**
      * 判断是否包含某元素
+     * O(n)
      *
      * @param e 元素
      * @return 是否包含
@@ -47,6 +48,7 @@ public class LinkedListSet<E> implements Set<E> {
 
     /**
      * 添加元素, 不能有重复元素
+     * O(n)
      *
      * @param e 待添加元素
      */
@@ -59,6 +61,7 @@ public class LinkedListSet<E> implements Set<E> {
 
     /**
      * 删除元素
+     * O(n)
      *
      * @param e 待删除元素
      */
