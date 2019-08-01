@@ -9,43 +9,44 @@ import java.util.ArrayList;
  */
 public class TestMap {
 
+    private static double testMap(Map<String, Integer> map, String fileName) {
+        double startTime = System.nanoTime();
+
+        System.out.println(fileName);
+        ArrayList<String> words = new ArrayList<>();
+        if (FileOperation.readFile(fileName, words)) {
+            System.out.println("Total words: " + words.size());
+
+            for (String word : words) {
+                if (map.get(word) != null) {
+                    map.set(word, map.get(word) + 1);
+                } else {
+                    map.add(word, 1);
+                }
+            }
+
+            System.out.println("Total different words: " + map.getSize());
+            System.out.println("Frequency of PRIDE: " + map.get("pride"));
+            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
+        }
+
+        double endTime = System.nanoTime();
+
+        return (endTime - startTime) / 1000000000.0;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Pride and prejudice");
-        ArrayList<String> words1 = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice.txt", words1)) {
-            System.out.println("Total words: " + words1.size());
+        String fileName = "pride-and-prejudice.txt";
 
-            LinkedListMap<String, Integer> map = new LinkedListMap<>();
-            for (String word : words1) {
-                if (map.get(word) != null) {
-                    map.set(word, map.get(word) + 1);
-                } else {
-                    map.add(word, 1);
-                }
-            }
+        BSTMap<String, Integer> bstMap = new BSTMap<>();
+        double time1 = testMap(bstMap, fileName);
+        System.out.println("BST Map: " + time1 + " s.");
 
-            System.out.println("Total different words: " + map.getSize());
-            System.out.println("Frequency of PRIDE: " + map.get("pride"));
-            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
-        }
+        System.out.println();
 
-        ArrayList<String> words2 = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice.txt", words2)) {
-            System.out.println("Total words: " + words2.size());
-
-            BSTMap<String, Integer> map = new BSTMap<>();
-            for (String word : words2) {
-                if (map.get(word) != null) {
-                    map.set(word, map.get(word) + 1);
-                } else {
-                    map.add(word, 1);
-                }
-            }
-
-            System.out.println("Total different words: " + map.getSize());
-            System.out.println("Frequency of PRIDE: " + map.get("pride"));
-            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
-        }
+        LinkedListMap<String, Integer> linkedListMap = new LinkedListMap<>();
+        double time2 = testMap(linkedListMap, fileName);
+        System.out.println("Linked list Map: " + time2 + " s.");
     }
 
 }
