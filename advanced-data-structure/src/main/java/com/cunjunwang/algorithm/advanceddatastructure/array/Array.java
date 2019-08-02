@@ -247,6 +247,21 @@ public class Array<E> {
     }
 
     /**
+     * 交换元素位置
+     *
+     * @param i i
+     * @param j j
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("AddLast failed, Require index >= 0 and index <= size");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
+
+    /**
      * toString
      */
     @Override
