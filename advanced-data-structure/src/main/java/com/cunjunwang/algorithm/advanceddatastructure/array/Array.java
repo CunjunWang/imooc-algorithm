@@ -30,6 +30,19 @@ public class Array<E> {
     }
 
     /**
+     * 使用传入的数组构造动态数组
+     *
+     * @param arr 传入数组
+     */
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
+    /**
      * 获取元素个数
      *
      * @return 元素个数

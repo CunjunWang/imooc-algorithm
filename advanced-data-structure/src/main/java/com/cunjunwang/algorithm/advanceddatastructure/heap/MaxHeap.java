@@ -17,6 +17,11 @@ public class MaxHeap<E extends Comparable<E>> {
         data = new Array<>();
     }
 
+    public MaxHeap(E[] arr) {
+        data = new Array<>(arr);
+        this.heapify(data);
+    }
+
     public int size() {
         return data.getSize();
     }
@@ -60,6 +65,35 @@ public class MaxHeap<E extends Comparable<E>> {
         // 维护最大堆性质
         this.shiftDown(0);
         return ret;
+    }
+
+    /**
+     * 取出最大元素并替换为e
+     *
+     * @param e 待替换的元素
+     * @return 最大元素
+     */
+    public E replace(E e) {
+        E ret = findMax();
+        data.set(0, e);
+        this.shiftDown(0);
+        return ret;
+    }
+
+    /**
+     * 将任意数组整理成heap
+     * O(n) (复杂度计算比较复杂)
+     *
+     * @param arr 待整理的数组
+     */
+    public void heapify(Array<E> arr) {
+        // 当然可以遍历数组, 调用heap.add
+        // 但是就比较慢了, O(n*lg(n))
+        // 最后一个非叶子节点的索引为: parent(array.size() - 1)
+        // 从第一个非叶子节点开始, 往前一个一个shiftDown
+        for (int i = parent(arr.getSize() - 1); i >= 0; i--) {
+            shiftDown(i);
+        }
     }
 
     /**
