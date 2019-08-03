@@ -1,0 +1,66 @@
+1. 什么是动态规划(dynamic programming)
+
+举例：斐波那契数列Fibonacci Sequence
+F(0) = 1, F(1) = 1, F(n) = F(n-1) + F(n-2) 天然的递归表达式。
+trivial代码：
+int fib(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    return fib(n-1) + fib(n-2);
+}
+问题：效率太低了, 有很多值都被重复计算, O(2^n)
+            5
+          /   \
+         4     3
+        / \   ...类似
+       3   2
+      / \  /\
+     2  1 1  0
+    / \
+   1  0
+
+对于重复计算, 是否能只计算一次?
+用一个全局数组memo来记录已经计算过的值
+// 记忆化搜索, memoization, O(n)
+自上向下解决问题, 假设基本的问题已经解决了:
+vector<int> memo;
+memo = vector<int>(n+1, -1);
+int fib(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    if (memo[n] == -1) {
+        memo[n] = fib(n-1) + fib(n-2);
+    }
+    return memo[n];
+}
+
+动态规划 - 自下而上解决问题的代码:
+int fib(int n) {
+    vector<int> memo(n+1, -1);
+    memo[0] = 0;
+    memo[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        memo[i] = memo[i-1] + memo[i-2];
+    }
+    return memo[n];
+}
+这种方法更优, 因为没有递归调用, 每个memo只访问了一次.
+
+动态规划的基本思路: 将原问题拆解成若干个子问题, 同时保存子问题的答案, 使得每个子问题都只求解一次, 最终获得原问题的答案
+
+大多数动态规划的问题的本质是一个递归问题
+
+                      记忆化搜索 (自顶向下解决问题)
+                    /
+递归问题 -> 重叠子问题
+                    \
+                      动态规划 (自底向上解决问题)
+
