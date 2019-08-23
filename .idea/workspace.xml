@@ -12,29 +12,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39c54a38-ba49-4c90-8e63-0409b4b9de48" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode104_MaximumDepthOfBinaryTree/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode112_PathSum/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/.idea/LeetCode226_InvertBinaryTree.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode226_InvertBinaryTree/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode235_LowestCommonAncestorOfBST/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode257_BinaryTreePaths/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode257_BinaryTreePaths/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode257_BinaryTreePaths/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/.idea/LeetCode437_PathSumIII.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/binary-search-tree/LeetCode437_PathSumIII/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/ListNode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/linked-list/LeetCode206_ReverseLinkedList/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/.idea/LeetCode279_PerfectSquares.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-algorithm/stack-queue-priority/LeetCode279_PerfectSquares/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/imooc_algorithm.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/imooc_algorithm.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/imooc_algorithm.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/imooc_algorithm.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/graph/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/graph/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/graph/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/graph/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/graph/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/graph/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/heap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/heap/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/heap/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/heap/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-structure-algorithm/heap/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data-structure-algorithm/heap/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/array/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/array/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/0-1背包问题分析.txt" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/0-1背包问题分析.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/LeetCode198_HouseRobber/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/LeetCode198_HouseRobber/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/dynamic-programming/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-algorithm/search/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/interview-algorithm/search/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,16 +163,17 @@
       <workItem from="1562679797295" duration="22000" />
       <workItem from="1563116042064" duration="52000" />
       <workItem from="1566502926450" duration="28000" />
+      <workItem from="1566576942610" duration="19000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1541000" />
+    <option name="totallyTimeSpent" value="1560000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="970" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13369964" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13492064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
