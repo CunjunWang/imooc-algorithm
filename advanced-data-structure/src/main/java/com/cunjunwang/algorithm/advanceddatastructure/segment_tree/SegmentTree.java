@@ -69,6 +69,48 @@ public class SegmentTree<E> {
     }
 
     /**
+     * 将index位置的值更新为e
+     *
+     * @param index 待更新的位置
+     * @param e     元素值
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index >= data.length)
+            throw new IllegalArgumentException("Index is illegal.");
+        data[index] = e;
+        set(0, 0, data.length - 1, index, e);
+    }
+
+    /**
+     * 在线段树中把index位置的值更新为e
+     *
+     * @param treeIndex 线段树的根位置
+     * @param l         当前位置表示区间的左端点
+     * @param r         当前位置表示区间的右端点
+     * @param index     待更新的位置
+     * @param e         元素值
+     */
+    private void set(int treeIndex, int l, int r, int index, E e) {
+        if (l == r) {
+            tree[treeIndex] = e;
+            return;
+        }
+        int mid = l + (r - l) / 2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+        // 在左子树
+        if (index <= mid) {
+            set(leftTreeIndex, l, mid, index, e);
+        }
+        // 在右子树
+        else {
+            set(rightTreeIndex, mid + 1, r, index, e);
+        }
+        // ****** 包含该index的所有父辈区间都要相应改变 ******
+        tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
+
+    /**
      * 递归查询函数, 从treeIndex出发, 这个节点表示的区间是[l...r]
      * 要查询区间[queryL, queryR]
      *
