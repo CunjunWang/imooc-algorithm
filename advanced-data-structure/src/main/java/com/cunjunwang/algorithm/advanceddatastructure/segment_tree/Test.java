@@ -9,6 +9,13 @@ public class Test {
         Integer[] nums = {-2, 0, 3, -5, 2, -1};
         SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, (a, b) -> a + b);
         System.out.println(segmentTree.toString());
+
+        Integer result = segmentTree.query(0, 2);
+        System.out.println(result);
+        result = segmentTree.query(2, 5);
+        System.out.println(result);
+        result = segmentTree.query(0, 5);
+        System.out.println(result);
     }
 
 }
