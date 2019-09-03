@@ -17,7 +17,8 @@ public class AdjacentSet {
     /**
      * 构建邻接表
      * 使用红黑树 TreeSet:
-     * 时间复杂度 O(lg(V)), 保持了数据存储的顺序性, 哈希表性能更优为O(1), 但没有顺序
+     * 时间复杂度 O(E*lg(V)), 保持了数据存储的顺序性, 哈希表性能更优为O(1), 但没有顺序
+     * 空间复杂度 O(V + E) 不可以理解为 O(E), 因为可能根本没有边
      * 缺点: 对于稀疏树, 浪费了太多空间
      *
      * @param filename
@@ -78,7 +79,7 @@ public class AdjacentSet {
 
     /**
      * 判断两个顶点之间是否有边
-     * O(degree(v))
+     * O(lg(V))
      *
      * @param v 顶点1
      * @param w 顶点2
@@ -92,7 +93,7 @@ public class AdjacentSet {
 
     /**
      * 返回与v相邻的边
-     * O(degree(v))
+     * O(degree(v)), 最差O(V)
      *
      * @param v 顶点
      * @return 和v相邻的顶点集合
