@@ -2,34 +2,35 @@ package com.cunjunwang.algorithm.advancedgraph.represent;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
  * Created by CunjunWang on 2019-09-02.
  */
-public class AdjacentMatrix {
+public class AdjacentList {
 
     private int V; // vertex number
     private int E; // edge number
-    private int[][] adjMatrix; // adjacent matrix
+    private LinkedList<Integer>[] adjList; // adjacent list
 
     /**
-     * 构建邻接矩阵
+     * 构建邻接表
      * 时间复杂度 O(E)
      * 空间复杂度 O(V^2)
      * 缺点: 对于稀疏树, 浪费了太多空间
      *
      * @param filename
      */
-    public AdjacentMatrix(String filename) {
+    public AdjacentList(String filename) {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)) {
             V = scanner.nextInt();
             if (V < 0)
                 throw new IllegalArgumentException("V must be non-negative");
-            adjMatrix = new int[V][V];
+            adjList = new LinkedList[V];
+            for (int i = 0; i < V; i++)
+                adjList[i] = new LinkedList<>();
 
             E = scanner.nextInt();
             if (E < 0)
@@ -44,12 +45,12 @@ public class AdjacentMatrix {
                 if (a == b)
                     throw new IllegalArgumentException("Self loop detected");
 
-                // 判断平行边
-                if (adjMatrix[a][b] == 1)
+                // 判断平行边, 最坏 O(V)
+                if (adjList[a].contains(b))
                     throw new IllegalArgumentException("Parallel edges detected");
 
-                adjMatrix[a][b] = 1;
-                adjMatrix[b][a] = 1;
+                adjList[a].add(b);
+                adjList[b].add(a);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,7 +86,7 @@ public class AdjacentMatrix {
     public boolean hasEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        return adjMatrix[v][w] == 1;
+        return adjList[v].contains(w);
     }
 
     /**
@@ -95,13 +96,9 @@ public class AdjacentMatrix {
      * @param v 顶点
      * @return 和v相邻的顶点集合
      */
-    public List<Integer> adj(int v) {
+    public LinkedList<Integer> adj(int v) {
         validateVertex(v);
-        List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < V; i++)
-            if (adjMatrix[v][i] == 1)
-                res.add(i);
-        return res;
+        return adjList[v];
     }
 
     /**
@@ -128,10 +125,10 @@ public class AdjacentMatrix {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("V = %d, E = %d\n", V, E));
-        for (int i = 0; i < V; i++) {
-            for (int j = 0; j < V; j++) {
-                sb.append(String.format("%d ", adjMatrix[i][j]));
-            }
+        for (int v = 0; v < V; v++) {
+            sb.append(String.format("%d : ", v));
+            for (int w : adjList[v])
+                sb.append(String.format("%d ", w));
             sb.append("\n");
         }
         return sb.toString();
@@ -139,7 +136,8 @@ public class AdjacentMatrix {
 
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/represent/g.txt";
-        AdjacentMatrix adjacentMatrix = new AdjacentMatrix(filename);
-        System.out.println(adjacentMatrix.toString());
+        AdjacentList adjacentList = new AdjacentList(filename);
+        System.out.println(adjacentList.toString());
     }
+
 }
