@@ -2,35 +2,35 @@ package com.cunjunwang.algorithm.advancedgraph.represent;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * Created by CunjunWang on 2019-09-02.
  */
-public class AdjacentList {
+public class AdjacentSet {
 
     private int V; // vertex number
     private int E; // edge number
-    private LinkedList<Integer>[] adjList; // adjacent list
+    private TreeSet<Integer>[] adjSet; // adjacent list
 
     /**
      * 构建邻接表
-     * 使用链表 LinkedList:
-     * 时间复杂度 O(E*V), V主要来自于平行边的判断, 需要扫描链表, 最坏时扫描是O(V)
-     * 空间复杂度 O(V + E) 不可以理解为 O(E), 因为可能根本没有边!
+     * 使用红黑树 TreeSet:
+     * 时间复杂度 O(lg(V)), 保持了数据存储的顺序性, 哈希表性能更优为O(1), 但没有顺序
+     * 缺点: 对于稀疏树, 浪费了太多空间
      *
      * @param filename
      */
-    public AdjacentList(String filename) {
+    public AdjacentSet(String filename) {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)) {
             V = scanner.nextInt();
             if (V < 0)
                 throw new IllegalArgumentException("V must be non-negative");
-            adjList = new LinkedList[V];
+            adjSet = new TreeSet[V];
             for (int i = 0; i < V; i++)
-                adjList[i] = new LinkedList<>();
+                adjSet[i] = new TreeSet<>();
 
             E = scanner.nextInt();
             if (E < 0)
@@ -45,12 +45,13 @@ public class AdjacentList {
                 if (a == b)
                     throw new IllegalArgumentException("Self loop detected");
 
-                // 判断平行边, 最坏 O(V)
-                if (adjList[a].contains(b))
+                // 判断平行边, 最坏 O(lg(V))
+                if (adjSet[a].contains(b))
                     throw new IllegalArgumentException("Parallel edges detected");
 
-                adjList[a].add(b);
-                adjList[b].add(a);
+                // O(lg(V))
+                adjSet[a].add(b);
+                adjSet[b].add(a);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -86,7 +87,7 @@ public class AdjacentList {
     public boolean hasEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        return adjList[v].contains(w);
+        return adjSet[v].contains(w);
     }
 
     /**
@@ -96,9 +97,9 @@ public class AdjacentList {
      * @param v 顶点
      * @return 和v相邻的顶点集合
      */
-    public LinkedList<Integer> adj(int v) {
+    public Iterable<Integer> adj(int v) {
         validateVertex(v);
-        return adjList[v];
+        return adjSet[v];
     }
 
     /**
@@ -108,7 +109,8 @@ public class AdjacentList {
      * @return 度数
      */
     public int degree(int v) {
-        return adj(v).size();
+        validateVertex(v);
+        return adjSet[v].size();
     }
 
     /**
@@ -127,7 +129,7 @@ public class AdjacentList {
         sb.append(String.format("V = %d, E = %d\n", V, E));
         for (int v = 0; v < V; v++) {
             sb.append(String.format("%d : ", v));
-            for (int w : adjList[v])
+            for (int w : adjSet[v])
                 sb.append(String.format("%d ", w));
             sb.append("\n");
         }
@@ -136,8 +138,8 @@ public class AdjacentList {
 
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/represent/g.txt";
-        AdjacentList adjacentList = new AdjacentList(filename);
-        System.out.println(adjacentList.toString());
+        AdjacentSet adjacentSet = new AdjacentSet(filename);
+        System.out.println(adjacentSet.toString());
     }
 
 }
