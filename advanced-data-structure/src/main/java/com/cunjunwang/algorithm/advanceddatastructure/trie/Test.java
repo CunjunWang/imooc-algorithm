@@ -46,5 +46,4 @@ public class Test {
             System.out.println("Trie: " + time + " s");
         }
     }
-
 }

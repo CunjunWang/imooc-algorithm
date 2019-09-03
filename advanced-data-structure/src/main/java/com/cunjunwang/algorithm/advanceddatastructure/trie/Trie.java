@@ -77,4 +77,22 @@ public class Trie {
         }
         return cur.isWord;
     }
+
+    /**
+     * 在trie中查询是否有单词以指定前缀为前缀
+     *
+     * @param prefix 指定前缀
+     * @return
+     */
+    public boolean isPrefix(String prefix) {
+        Node cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            if (cur.next.get(c) == null) {
+                return false;
+            }
+            cur = cur.next.get(c);
+        }
+        return true;
+    }
 }
