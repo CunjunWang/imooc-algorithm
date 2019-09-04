@@ -42,5 +42,8 @@ public class Test {
         UnionFind unionFindOptSize = new UnionFindOptSize(size);
         System.out.println("Union Find size optimized: " + testUF(unionFindOptSize, m) + " s");
 
+        UnionFind unionFindOptRank = new UnionFindOptRank(size);
+        System.out.println("Union Find rank optimized: " + testUF(unionFindOptRank, m) + " s");
+
     }
 }
