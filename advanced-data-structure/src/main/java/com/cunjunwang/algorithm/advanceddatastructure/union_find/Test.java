@@ -48,5 +48,8 @@ public class Test {
         UnionFind unionFindPathCompression = new UnionFindPathCompression(size);
         System.out.println("Union Find path compression: " + testUF(unionFindPathCompression, m) + " s");
 
+        UnionFind unionFindOptPathCompression = new UnionFindOptPathCompression(size);
+        System.out.println("Union Find opt path compression: " + testUF(unionFindOptPathCompression, m) + " s");
+
     }
 }
