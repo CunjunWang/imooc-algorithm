@@ -30,20 +30,23 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        int size = 100000;
-        int m = 100000;
+        int size = 10000000;
+        int m = 10000000;
 
-        UnionFind unionFindQuickFind = new UnionFindQuickFind(size);
-        System.out.println("Union Find Quick Find: " + testUF(unionFindQuickFind, m) + " s");
-
-        UnionFind unionFindQuickUnion = new UnionFindQuickUnion(size);
-        System.out.println("Union Find Quick Union: " + testUF(unionFindQuickUnion, m) + " s");
+//        UnionFind unionFindQuickFind = new UnionFindQuickFind(size);
+//        System.out.println("Union Find Quick Find: " + testUF(unionFindQuickFind, m) + " s");
+//
+//        UnionFind unionFindQuickUnion = new UnionFindQuickUnion(size);
+//        System.out.println("Union Find Quick Union: " + testUF(unionFindQuickUnion, m) + " s");
 
         UnionFind unionFindOptSize = new UnionFindOptSize(size);
         System.out.println("Union Find size optimized: " + testUF(unionFindOptSize, m) + " s");
 
         UnionFind unionFindOptRank = new UnionFindOptRank(size);
         System.out.println("Union Find rank optimized: " + testUF(unionFindOptRank, m) + " s");
+
+        UnionFind unionFindPathCompression = new UnionFindPathCompression(size);
+        System.out.println("Union Find path compression: " + testUF(unionFindPathCompression, m) + " s");
 
     }
 }
