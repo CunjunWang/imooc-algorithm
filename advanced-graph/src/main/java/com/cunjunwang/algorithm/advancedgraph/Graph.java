@@ -123,7 +123,7 @@ public class Graph {
      *
      * @param v 顶点序号
      */
-    private void validateVertex(int v) {
+    public void validateVertex(int v) {
         if (v < 0 || v > V)
             throw new IllegalArgumentException(String.format("Vertex %d is invalid", v));
     }

@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.dfs;
+package com.cunjunwang.algorithm.advancedgraph.dfs.connected_component;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 

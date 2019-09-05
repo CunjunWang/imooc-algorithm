@@ -1,10 +1,12 @@
-package com.cunjunwang.algorithm.advancedgraph.dfs;
+package com.cunjunwang.algorithm.advancedgraph.dfs.connected_component;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
+ * 具体求解联通分量
  * Created by CunjunWang on 2019-09-04.
  */
 public class SolveConnectedComponent {
@@ -79,11 +81,47 @@ public class SolveConnectedComponent {
         return connectedComponentCount;
     }
 
+    /**
+     * 判断两节点是否相连
+     *
+     * @param v 节点1
+     * @param w 节点2
+     * @return 是否相连
+     */
+    public boolean isConnected(int v, int w) {
+        G.validateVertex(v);
+        G.validateVertex(w);
+        return visited[v] == visited[w];
+    }
+
+    /**
+     * 获取联通分量, 和每个联通分量有哪些元素
+     *
+     * @return 联通分量
+     */
+    public ArrayList<Integer>[] components() {
+        ArrayList<Integer>[] res = new ArrayList[connectedComponentCount];
+        for (int i = 0; i < connectedComponentCount; i++) {
+            res[i] = new ArrayList<>();
+        }
+        for (int v = 0; v < G.V(); v++) {
+            res[visited[v]].add(v);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g1.txt";
         Graph G = new Graph(filename);
         SolveConnectedComponent cc = new SolveConnectedComponent(G);
         System.out.println(cc.getConnectedComponentCount());
+        System.out.println(cc.isConnected(0, 6));
+        System.out.println(cc.isConnected(0, 5));
+        ArrayList<Integer>[] comp = cc.components();
+        for (int i = 0; i < comp.length; i++) {
+            System.out.print(i + " : ");
+            System.out.println(comp[i].toString());
+        }
     }
 
 }
