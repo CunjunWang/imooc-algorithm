@@ -2,46 +2,44 @@ package com.cunjunwang.algorithm.advancedgraph.dfs;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * Created by CunjunWang on 2019-09-03.
+ * 使用dfs求联通分量个数
+ * Created by CunjunWang on 2019-09-04.
  */
-public class GraphDFS {
+public class ConnectedComponent {
 
     private Graph G;
 
     private boolean[] visited;
 
-    // 先序dfs之后的结果
-    private ArrayList<Integer> pre = new ArrayList<>();
-    // 后序dfs之后的结果
-    private ArrayList<Integer> post = new ArrayList<>();
+    private int connectedComponentCount;
 
-    public GraphDFS(Graph G) {
+    public ConnectedComponent(Graph G) {
         this.G = G;
         visited = new boolean[G.V()];
+        connectedComponentCount = 0;
         for (int v = 0; v < G.V(); v++)
-            if (!visited[v])
+            if (!visited[v]) {
                 dfs(v);
+                connectedComponentCount++;
+            }
     }
 
     /**
      * 对Graph进行深度优先遍历
      * 递归写法
-     * 
+     *
      * O(V + E)
      *
      * @param v
      */
     private void dfs(int v) {
         visited[v] = true;
-        pre.add(v);
         for (int w : G.adj(v))
             if (!visited[w])
                 dfs(w);
-        post.add(v);
     }
 
     private void dfsIterative(int v) {
@@ -50,41 +48,28 @@ public class GraphDFS {
         visited[v] = true;
         while (!todo.empty()) {
             Integer cur = todo.pop();
-            pre.add(cur);
             for (int w : G.adj(cur)) {
                 if (!visited[w]) {
                     todo.push(w);
                     visited[w] = true;
                 }
             }
-            post.add(cur);
         }
     }
 
     /**
-     * 获得先序遍历结果
+     * 获得联通分量个数
      *
-     * @return pre 先序遍历结果
+     * @return 联通分量个数
      */
-    public Iterable<Integer> getPre() {
-        return pre;
-    }
-
-    /**
-     * 获得后序遍历结果
-     *
-     * @return post 后序遍历结果
-     */
-    public Iterable<Integer> getPost() {
-        return post;
+    public int getConnectedComponentCount() {
+        return connectedComponentCount;
     }
 
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
         Graph G = new Graph(filename);
-        GraphDFS graphDFS = new GraphDFS(G);
-        System.out.println("Pre: " + graphDFS.getPre());
-        System.out.println("Post: " + graphDFS.getPost());
+        ConnectedComponent cc = new ConnectedComponent(G);
+        System.out.println(cc.getConnectedComponentCount());
     }
-
 }
