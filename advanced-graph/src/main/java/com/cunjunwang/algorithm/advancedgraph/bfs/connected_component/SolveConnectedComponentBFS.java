@@ -1,15 +1,17 @@
-package com.cunjunwang.algorithm.advancedgraph.dfs.connected_component;
+package com.cunjunwang.algorithm.advancedgraph.bfs.connected_component;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
+import com.cunjunwang.algorithm.advancedgraph.dfs.connected_component.SolveConnectedComponent;
 
 import java.util.ArrayList;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
- * 具体求解联通分量
- * Created by CunjunWang on 2019-09-04.
+ * 通过bfs求解联通分量
+ * Created by CunjunWang on 2019-09-05.
  */
-public class SolveConnectedComponent {
+public class SolveConnectedComponentBFS {
 
     private Graph G;
 
@@ -17,7 +19,7 @@ public class SolveConnectedComponent {
 
     private int connectedComponentCount;
 
-    public SolveConnectedComponent(Graph G) {
+    public SolveConnectedComponentBFS(Graph G) {
         this.G = G;
         visited = new int[G.V()];
         connectedComponentCount = 0;
@@ -25,43 +27,27 @@ public class SolveConnectedComponent {
             visited[i] = -1;
         for (int v = 0; v < G.V(); v++)
             if (visited[v] == -1) {
-                dfs(v, connectedComponentCount);
+                bfs(v, connectedComponentCount);
                 connectedComponentCount++;
             }
     }
 
     /**
-     * 对Graph进行深度优先遍历
-     * 递归写法
-     * <p>
+     * 对Graph进行广度优先遍历, 求解联通分量
      * O(V + E)
      *
      * @param v           顶点
      * @param componentId 联通分量Id
      */
-    private void dfs(int v, int componentId) {
+    private void bfs(int v, int componentId) {
+        Queue<Integer> todo = new LinkedList<>();
+        todo.add(v);
         visited[v] = componentId;
-        for (int w : G.adj(v))
-            if (visited[w] == -1)
-                dfs(w, componentId);
-    }
-
-    /**
-     * 对Graph进行深度优先遍历
-     * 迭代写法
-     *
-     * @param v           顶点
-     * @param componentId 联通分量Id
-     */
-    private void dfsIterative(int v, int componentId) {
-        Stack<Integer> todo = new Stack<>();
-        todo.push(v);
-        visited[v] = componentId;
-        while (!todo.empty()) {
-            Integer cur = todo.pop();
+        while (!todo.isEmpty()) {
+            Integer cur = todo.remove();
             for (int w : G.adj(cur)) {
                 if (visited[w] == -1) {
-                    todo.push(w);
+                    todo.add(w);
                     visited[w] = componentId;
                 }
             }
@@ -113,7 +99,7 @@ public class SolveConnectedComponent {
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
         Graph G = new Graph(filename);
-        SolveConnectedComponent cc = new SolveConnectedComponent(G);
+        SolveConnectedComponentBFS cc = new SolveConnectedComponentBFS(G);
         System.out.println(cc.getConnectedComponentCount());
         System.out.println(cc.isConnected(0, 6));
         System.out.println(cc.isConnected(0, 5));
