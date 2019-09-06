@@ -44,8 +44,7 @@ public class GraphBFS {
         while (!queue.isEmpty()) {
             int cur = queue.remove();
             order.add(cur);
-
-            for (int w : G.adj(v)) {
+            for (int w : G.adj(cur)) {
                 if (!visited[w]) {
                     queue.add(w);
                     visited[w] = true; // 避免重复入队

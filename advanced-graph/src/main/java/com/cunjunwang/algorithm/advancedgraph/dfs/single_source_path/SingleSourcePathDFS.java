@@ -9,7 +9,7 @@ import java.util.Collections;
  * 解决单源路径问题
  * Created by CunjunWang on 2019-09-04.
  */
-public class SingleSourcePath {
+public class SingleSourcePathDFS {
 
     private Graph G;
 
@@ -23,7 +23,7 @@ public class SingleSourcePath {
      * @param G      图
      * @param source 源
      */
-    public SingleSourcePath(Graph G, int source) {
+    public SingleSourcePathDFS(Graph G, int source) {
         G.validateVertex(source);
         this.G = G;
         this.source = source;
@@ -82,12 +82,12 @@ public class SingleSourcePath {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g1.txt";
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
         Graph G = new Graph(filename);
         int source = 0;
-        SingleSourcePath singleSourcePath = new SingleSourcePath(G, source);
+        SingleSourcePathDFS singleSourcePathDFS = new SingleSourcePathDFS(G, source);
         int target = 6;
-        System.out.println(source + " -> " + target + " : " + singleSourcePath.path(target));
+        System.out.println(source + " -> " + target + " : " + singleSourcePathDFS.path(target));
     }
 
 }
