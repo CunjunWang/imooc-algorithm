@@ -58,7 +58,7 @@ public class FindCutVertex {
                 }
 
                 child++;
-                if (v == parent && child >= 2) {
+                if (v == parent && child >= 2 && !res.contains(v)) {
                     res.add(v);
                 }
 
