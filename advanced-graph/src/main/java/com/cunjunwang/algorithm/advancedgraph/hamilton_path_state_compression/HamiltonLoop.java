@@ -39,15 +39,16 @@ public class HamiltonLoop {
         visited[v] = true;
         pre[v] = parent;
         left--;
+        if (left == 0 && G.hasEdge(v, 0)) {
+            end = v;
+            return true;
+        }
 
         for (int w : G.adj(v)) {
             if (!visited[w]) {
                 if (dfs(w, v, left)) {
                     return true;
                 }
-            } else if (w == 0 && left == 0) {
-                end = v;
-                return true;
             }
         }
         // 回溯 backtrack searching
