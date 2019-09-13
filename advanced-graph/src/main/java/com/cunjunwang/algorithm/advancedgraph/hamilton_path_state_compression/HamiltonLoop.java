@@ -6,14 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * dfs暴力求解图的汉密尔顿回路
+ * dfs暴力求解图的汉密尔顿回路, visited经过状态压缩
  * Created by CunjunWang on 2019-09-11.
  */
 public class HamiltonLoop {
 
     private Graph G;
-
-    private boolean[] visited;
 
     private int[] pre; // 记录父亲节点
 
@@ -21,12 +19,12 @@ public class HamiltonLoop {
 
     public HamiltonLoop(Graph G) {
         this.G = G;
-        visited = new boolean[G.V()];
         pre = new int[G.V()];
         end = -1;
 
+        int visited = 0;
         // 只需要从一个点开始
-        dfs(0, 0, G.V());
+        dfs(visited, 0, 0, G.V());
     }
 
     /**
@@ -35,8 +33,8 @@ public class HamiltonLoop {
      *
      * @param v
      */
-    private boolean dfs(int v, int parent, int left) {
-        visited[v] = true;
+    private boolean dfs(int visited, int v, int parent, int left) {
+        visited += (1 << v);
         pre[v] = parent;
         left--;
         if (left == 0 && G.hasEdge(v, 0)) {
@@ -45,14 +43,16 @@ public class HamiltonLoop {
         }
 
         for (int w : G.adj(v)) {
-            if (!visited[w]) {
-                if (dfs(w, v, left)) {
+            // & 的优先级很低, 比 == 低
+            if ((visited & (1 << w)) == 0) {
+                if (dfs(visited, w, v, left)) {
                     return true;
                 }
             }
         }
         // 回溯 backtrack searching
-        visited[v] = false;
+        left++; // 其实可以不写这句话
+        visited -= (1 << v);
         return false;
     }
 
@@ -61,7 +61,7 @@ public class HamiltonLoop {
         if (end == -1)
             return res;
         int cur = end;
-        while(cur != 0) {
+        while (cur != 0) {
             res.add(cur);
             cur = pre[cur];
         }
