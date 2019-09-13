@@ -1,5 +1,7 @@
 package com.cunjunwang.algorithm.advancedgraph.hamilton_path_state_compression.Leetcode980_UniquePathsIII;
 
+import java.util.Arrays;
+
 /**
  * Created by CunjunWang on 2019-09-11.
  */
@@ -13,11 +15,17 @@ public class UniquePathsIII {
 
     private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
+    private int[][] memo;
+
     public int uniquePathsIII(int[][] grid) {
         this.grid = grid;
         R = grid.length;
         C = grid[0].length;
         int left = R * C;
+        memo = new int[1 << R * C][R * C];
+        for (int i = 0; i < memo.length; i++) {
+            Arrays.fill(memo[i], -1);
+        }
 
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
@@ -40,12 +48,18 @@ public class UniquePathsIII {
     }
 
     private int dfs(int visited, int v, int left) {
+
+        if (memo[visited][v] != -1) {
+            return memo[visited][v];
+        }
+
         visited += (1 << v);
         left--;
 
         if (left == 0 && v == end) {
             // 回溯, 因为要找到所有的路径
             visited -= (1 << v);
+            memo[visited][v] = 1;
             return 1;
         }
 
@@ -59,6 +73,7 @@ public class UniquePathsIII {
         }
 
         visited -= (1 << v);
+        memo[visited][v] = res;
         return res;
     }
 
