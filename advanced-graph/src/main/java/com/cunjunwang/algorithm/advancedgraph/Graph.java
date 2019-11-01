@@ -1,7 +1,5 @@
 package com.cunjunwang.algorithm.advancedgraph;
 
-import com.cunjunwang.algorithm.advancedgraph.represent.AdjacentSet;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,14 +7,15 @@ import java.util.TreeSet;
 
 /**
  * 以TreeSet为底层实现的邻接表表示
- * 暂时只支持无向无权图
  * Created by CunjunWang on 2019-09-02.
  */
 public class Graph {
 
     private int V; // vertex number
     private int E; // edge number
-    private TreeSet<Integer>[] adjSet; // adjacent list
+    private TreeSet<Integer>[] adj; // adjacent list
+
+    private boolean isDirected;
 
     /**
      * 构建邻接表
@@ -27,15 +26,18 @@ public class Graph {
      *
      * @param filename
      */
-    public Graph(String filename) {
+    public Graph(String filename, boolean isDirected) {
+
+        this.isDirected = isDirected;
+
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)) {
             V = scanner.nextInt();
             if (V < 0)
                 throw new IllegalArgumentException("V must be non-negative");
-            adjSet = new TreeSet[V];
+            adj = new TreeSet[V];
             for (int i = 0; i < V; i++)
-                adjSet[i] = new TreeSet<>();
+                adj[i] = new TreeSet<>();
 
             E = scanner.nextInt();
             if (E < 0)
@@ -51,16 +53,22 @@ public class Graph {
                     throw new IllegalArgumentException("Self loop detected");
 
                 // 判断平行边, 最坏 O(lg(V))
-                if (adjSet[a].contains(b))
+                if (adj[a].contains(b))
                     throw new IllegalArgumentException("Parallel edges detected");
 
                 // O(lg(V))
-                adjSet[a].add(b);
-                adjSet[b].add(a);
+                adj[a].add(b);
+
+                if (!isDirected)
+                    adj[b].add(a);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Graph(String filename) {
+        this(filename, false);
     }
 
     /**
@@ -92,7 +100,7 @@ public class Graph {
     public boolean hasEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        return adjSet[v].contains(w);
+        return adj[v].contains(w);
     }
 
     /**
@@ -104,7 +112,7 @@ public class Graph {
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
-        return adjSet[v];
+        return adj[v];
     }
 
     /**
@@ -113,9 +121,19 @@ public class Graph {
      * @param v 顶点
      * @return 度数
      */
-    public int degree(int v) {
+//    public int degree(int v) {
+//        validateVertex(v);
+//        return adj[v].size();
+//    }
+    public void removeEdge(int v, int w) {
         validateVertex(v);
-        return adjSet[v].size();
+        validateVertex(w);
+        if (adj[v].contains(w))
+            E--;
+
+        adj[v].remove(w);
+        if (!isDirected)
+            adj[w].remove(v);
     }
 
     /**
@@ -131,10 +149,10 @@ public class Graph {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("V = %d, E = %d\n", V, E));
+        sb.append(String.format("V = %d, E = %d, directed = %b\n", V, E, isDirected));
         for (int v = 0; v < V; v++) {
             sb.append(String.format("%d : ", v));
-            for (int w : adjSet[v])
+            for (int w : adj[v])
                 sb.append(String.format("%d ", w));
             sb.append("\n");
         }
@@ -142,8 +160,8 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/represent/g.txt";
-        AdjacentSet adjacentSet = new AdjacentSet(filename);
-        System.out.println(adjacentSet.toString());
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/ug.txt";
+        Graph g = new Graph(filename, true);
+        System.out.println(g.toString());
     }
 }

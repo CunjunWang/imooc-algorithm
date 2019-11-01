@@ -12,7 +12,6 @@ import java.util.TreeMap;
 
 /**
  * 以TreeSet为底层实现的邻接表表示
- * 暂时只支持无向有权图
  * Created by CunjunWang on 2019-09-02.
  */
 public class WeightedGraph implements Cloneable {
@@ -23,6 +22,8 @@ public class WeightedGraph implements Cloneable {
     // map<vertex, weight>
     private TreeMap<Integer, Integer>[] adj; // adjacent list
 
+    private boolean isDirected;
+
     /**
      * 构建邻接表
      * 使用红黑树 TreeMap:
@@ -32,7 +33,7 @@ public class WeightedGraph implements Cloneable {
      *
      * @param filename
      */
-    public WeightedGraph(String filename) {
+    public WeightedGraph(String filename, boolean isDirected) {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file)) {
             V = scanner.nextInt();
@@ -62,11 +63,21 @@ public class WeightedGraph implements Cloneable {
 
                 // O(lg(V))
                 adj[a].put(b, weight);
-                adj[b].put(a, weight);
+
+                if (!isDirected)
+                    adj[b].put(a, weight);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public WeightedGraph(String filename) {
+        this(filename, false);
+    }
+
+    public boolean isDirected() {
+        return this.isDirected;
     }
 
     /**
@@ -152,7 +163,7 @@ public class WeightedGraph implements Cloneable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("V = %d, E = %d\n", V, E));
+        sb.append(String.format("V = %d, E = %d, directed = %b\n", V, E, isDirected));
         for (int v = 0; v < V; v++) {
             sb.append(String.format("%d : ", v));
             for (Map.Entry<Integer, Integer> entry : adj[v].entrySet())
@@ -164,7 +175,8 @@ public class WeightedGraph implements Cloneable {
     }
 
     public static void main(String[] args) {
-        WeightedGraph g = new WeightedGraph("./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt");
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
+        WeightedGraph g = new WeightedGraph(filename, true);
         System.out.println(g);
     }
 
