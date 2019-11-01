@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.model_build_and_floodfill.Leetcode785_IsGraphBipartite;
+package com.cunjunwang.algorithm.advancedgraph.floodfill.Leetcode785_IsGraphBipartite;
 
 /**
  * Created by CunjunWang on 2019-09-06.

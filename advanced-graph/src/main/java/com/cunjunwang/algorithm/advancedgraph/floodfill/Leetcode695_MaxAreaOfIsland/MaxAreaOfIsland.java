@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.model_build_and_floodfill.Leetcode695_MaxAreaOfIsland;
+package com.cunjunwang.algorithm.advancedgraph.floodfill.Leetcode695_MaxAreaOfIsland;
 
 /**
  * Created by CunjunWang on 2019-09-06.

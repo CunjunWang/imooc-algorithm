@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.hamilton_path_state_compression.Leetcode980_UniquePathsIII;
+package com.cunjunwang.algorithm.advancedgraph.hamilton_path.Leetcode980_UniquePathsIII;
 
 import java.util.Arrays;
 

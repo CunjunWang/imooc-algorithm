@@ -30,7 +30,7 @@ public class GraphDFS {
     /**
      * 对Graph进行深度优先遍历
      * 递归写法
-     * 
+     * <p>
      * O(V + E)
      *
      * @param v
@@ -80,8 +80,8 @@ public class GraphDFS {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
-        Graph G = new Graph(filename);
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/ug.txt";
+        Graph G = new Graph(filename, true);
         GraphDFS graphDFS = new GraphDFS(G);
         System.out.println("Pre: " + graphDFS.getPre());
         System.out.println("Post: " + graphDFS.getPost());

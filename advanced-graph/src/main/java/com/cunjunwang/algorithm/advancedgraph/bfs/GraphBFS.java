@@ -63,8 +63,8 @@ public class GraphBFS {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g3.txt";
-        Graph G = new Graph(filename);
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/ug.txt";
+        Graph G = new Graph(filename, true);
         GraphBFS graphBFS = new GraphBFS(G);
         System.out.println("Order: " + graphBFS.getOrder());
     }

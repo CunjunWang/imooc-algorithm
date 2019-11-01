@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.hamilton_path_state_compression;
+package com.cunjunwang.algorithm.advancedgraph.hamilton_path;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
