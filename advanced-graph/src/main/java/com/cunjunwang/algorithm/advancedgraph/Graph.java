@@ -12,10 +12,14 @@ import java.util.TreeSet;
 public class Graph {
 
     private int V; // vertex number
+
     private int E; // edge number
+
     private TreeSet<Integer>[] adj; // adjacent list
 
     private boolean isDirected;
+
+    private int[] indegrees, outdegrees;
 
     /**
      * 构建邻接表
@@ -39,6 +43,9 @@ public class Graph {
             for (int i = 0; i < V; i++)
                 adj[i] = new TreeSet<>();
 
+            indegrees = new int[V];
+            outdegrees = new int[V];
+
             E = scanner.nextInt();
             if (E < 0)
                 throw new IllegalArgumentException("E must be non-negative");
@@ -57,7 +64,11 @@ public class Graph {
                     throw new IllegalArgumentException("Parallel edges detected");
 
                 // O(lg(V))
-                adj[a].add(b);
+                adj[a].add(b); // a -> b
+                if (isDirected) {
+                    outdegrees[a]++; // a 出度增加
+                    indegrees[b]++; // b 入度增加
+                }
 
                 if (!isDirected)
                     adj[b].add(a);
@@ -120,20 +131,46 @@ public class Graph {
     }
 
     /**
-     * 返回顶点的度
+     * 返回顶点的度，只适用于无向图
      *
      * @param v 顶点
      * @return 度数
      */
-//    public int degree(int v) {
-//        validateVertex(v);
-//        return adj[v].size();
-//    }
+    public int degree(int v) {
+        if (isDirected) {
+            throw new RuntimeException("Degree only works on undirected graph");
+        }
+        validateVertex(v);
+        return adj[v].size();
+    }
+
+    public int indegree(int v) {
+        if (!isDirected) {
+            throw new RuntimeException("Indegree only works on directed graph");
+        }
+        validateVertex(v);
+        return indegrees[v];
+    }
+
+    public int outdegree(int v) {
+        if (!isDirected) {
+            throw new RuntimeException("Outdegree only works on directed graph");
+        }
+        validateVertex(v);
+        return outdegrees[v];
+    }
+
     public void removeEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        if (adj[v].contains(w))
+        if (adj[v].contains(w)) {
             E--;
+
+            if (isDirected) {
+                outdegrees[v]--;
+                indegrees[w]--;
+            }
+        }
 
         adj[v].remove(w);
         if (!isDirected)
@@ -164,8 +201,12 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/ug.txt";
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/ug.txt";
         Graph g = new Graph(filename, true);
         System.out.println(g.toString());
+
+        for (int v = 0; v < g.V(); v++) {
+            System.out.println(g.indegrees[v] + " " + g.outdegrees[v]);
+        }
     }
 }

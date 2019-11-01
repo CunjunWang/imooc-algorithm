@@ -26,7 +26,7 @@ public class DirectedGraphCycleDetection {
         visited = new boolean[G.V()];
         onPath = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
-            if (!visited[v] && dfs(v, v)) {
+            if (!visited[v] && dfs(v)) {
                 hasCycle = true;
                 break;
             }
@@ -38,14 +38,13 @@ public class DirectedGraphCycleDetection {
      * O(V + E)
      *
      * @param v      当前节点
-     * @param parent 上一个节点
      * @return 从v开始遍历, 是否有环
      */
-    private boolean dfs(int v, int parent) {
+    private boolean dfs(int v) {
         visited[v] = true;
         onPath[v] = true;
         for (int w : G.adj(v))
-            if (!visited[w] && dfs(w, v)) {
+            if (!visited[w] && dfs(w)) {
                 return true;
             } else if (onPath[w]) {
                 // 当前w访问过, 而且不是v的上一个节点, 那么就找到环了
