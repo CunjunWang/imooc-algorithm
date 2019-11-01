@@ -71,6 +71,10 @@ public class Graph {
         this(filename, false);
     }
 
+    public boolean isDirected() {
+        return this.isDirected;
+    }
+
     /**
      * 返回顶点数
      *

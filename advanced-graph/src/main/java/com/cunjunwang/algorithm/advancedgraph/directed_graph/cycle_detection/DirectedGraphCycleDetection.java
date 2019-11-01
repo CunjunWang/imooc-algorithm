@@ -1,28 +1,30 @@
-package com.cunjunwang.algorithm.advancedgraph.dfs.undirected_graph_cycle_detection;
+package com.cunjunwang.algorithm.advancedgraph.directed_graph.cycle_detection;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
 /**
- * 无向图的环检测, 基于dfs
- * Created by CunjunWang on 2019-09-04.
+ * Created by CunjunWang on 2019-10-31.
  */
-public class UndirectedGraphCycleDetect {
+public class DirectedGraphCycleDetection {
 
     private Graph G;
 
     private boolean[] visited;
 
+    private boolean[] onPath;
+
     private boolean hasCycle;
 
-    public UndirectedGraphCycleDetect(Graph G) {
+    public DirectedGraphCycleDetection(Graph G) {
 
-        if (G.isDirected()) {
-            throw new IllegalArgumentException("This class only works in undirected graph");
+        if (!G.isDirected()) {
+            throw new IllegalArgumentException("This class only works in directed graph");
         }
 
         this.G = G;
         this.hasCycle = false;
         visited = new boolean[G.V()];
+        onPath = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!visited[v] && dfs(v, v)) {
                 hasCycle = true;
@@ -41,14 +43,15 @@ public class UndirectedGraphCycleDetect {
      */
     private boolean dfs(int v, int parent) {
         visited[v] = true;
-        for (int w : G.adj(v)) {
+        onPath[v] = true;
+        for (int w : G.adj(v))
             if (!visited[w] && dfs(w, v)) {
                 return true;
-            } else if (w != parent) {
+            } else if (onPath[w]) {
                 // 当前w访问过, 而且不是v的上一个节点, 那么就找到环了
                 return true;
             }
-        }
+        onPath[v] = false;
         return false;
     }
 
@@ -62,9 +65,9 @@ public class UndirectedGraphCycleDetect {
     }
 
     public static void main(String[] args) {
-        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g.txt";
-        Graph G = new Graph(filename);
-        UndirectedGraphCycleDetect cycleDetect = new UndirectedGraphCycleDetect(G);
+        String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/ug.txt";
+        Graph G = new Graph(filename, true);
+        DirectedGraphCycleDetection cycleDetect = new DirectedGraphCycleDetection(G);
         System.out.println(cycleDetect.hasCycle());
     }
 
