@@ -2,7 +2,9 @@ package com.cunjunwang.algorithm.advancedgraph.weighted_shortest_path;
 
 import com.cunjunwang.algorithm.advancedgraph.WeightedGraph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 /**
@@ -17,6 +19,8 @@ public class DijkstraOptimized {
     private int[] dis;
 
     private boolean[] visited;
+
+    private int[] pre;
 
     private class Node implements Comparable<Node> {
 
@@ -47,6 +51,10 @@ public class DijkstraOptimized {
         Arrays.fill(dis, Integer.MAX_VALUE);
         dis[s] = 0;
 
+        pre = new int[G.V()];
+        Arrays.fill(pre, -1);
+        pre[s] = s;
+
         visited = new boolean[G.V()];
         Arrays.fill(visited, false);
         // 不可以给s的初始值设为true, 因为在while中，
@@ -71,6 +79,7 @@ public class DijkstraOptimized {
                 if (!visited[w]) {
                     if (dis[cur] + G.getWeight(cur, w) < dis[w]) {
                         dis[w] = dis[cur] + G.getWeight(cur, w);
+                        pre[w] = cur;
 
                         // 每个node可能在pq中有多份
                         pq.add(new Node(w, dis[w]));
@@ -89,6 +98,21 @@ public class DijkstraOptimized {
         return dis[v];
     }
 
+    public Iterable<Integer> path(int t) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (!isConnectedTo(t))
+            return res;
+
+        int cur = t;
+        while (cur != s) {
+            res.add(cur);
+            cur = pre[cur];
+        }
+        res.add(s);
+        Collections.reverse(res);
+        return res;
+    }
+
     public static void main(String[] args) {
         WeightedGraph g = new WeightedGraph("./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/dij_g.txt");
         DijkstraOptimized dijkstra = new DijkstraOptimized(g, 0);
@@ -96,6 +120,8 @@ public class DijkstraOptimized {
         for (int v = 0; v < g.V(); v++)
             System.out.print(dijkstra.distTo(v) + " ");
         System.out.println();
+
+        System.out.println(dijkstra.path(3));
     }
 
 }
