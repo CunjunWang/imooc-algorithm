@@ -3,12 +3,12 @@ package com.cunjunwang.algorithm.advancedgraph.weighted_shortest_path;
 import com.cunjunwang.algorithm.advancedgraph.WeightedGraph;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * Created by CunjunWang on 2019-11-17.
  */
-public class Dijkstra {
-
+public class DijkstraOptimized {
     private WeightedGraph G;
 
     // 源点s
@@ -18,13 +18,27 @@ public class Dijkstra {
 
     private boolean[] visited;
 
+    private class Node implements Comparable<Node> {
+
+        public int v, dis;
+
+        public Node(int v, int dis) {
+            this.v = v;
+            this.dis = dis;
+        }
+
+        @Override
+        public int compareTo(Node another) {
+            return dis - another.dis;
+        }
+    }
+
     /*
-     * while循环最多执行V次
-     * 内部的for循环最多也执行V次
+     * 使用PQ优化
      *
-     * O(V^2)
+     * O(E*log(E))
      */
-    public Dijkstra(WeightedGraph G, int s) {
+    public DijkstraOptimized(WeightedGraph G, int s) {
         this.G = G;
         G.validateVertex(s);
         this.s = s;
@@ -38,18 +52,16 @@ public class Dijkstra {
         // 不可以给s的初始值设为true, 因为在while中，
         // 我们第一次要找的点就是这个s
 
-        while (true) {
-            // 1. 找当前没有确定最短距离的点钟，距离最小的那个点
-            int curDis = Integer.MAX_VALUE;
-            int cur = -1;
-            for (int v = 0; v < G.V(); v++)
-                if (!visited[v] && dis[v] < curDis) {
-                    curDis = dis[v];
-                    cur = v;
-                }
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        pq.add(new Node(s, 0));
 
-            if (cur == -1)
-                break;
+        while (!pq.isEmpty()) {
+
+            // 1. 找当前没有确定最短距离的点钟，距离最小的那个点
+            // O(logE) 最多的情况下，每一条边都加了一份关于另一个顶点的值
+            int cur = pq.poll().v;
+            if (visited[cur])
+                continue;
 
             // 2. 确定cur这个点的最短路径
             visited[cur] = true;
@@ -57,8 +69,12 @@ public class Dijkstra {
             // 3. 从cur开始更新距离
             for (int w : G.adj(cur))
                 if (!visited[w]) {
-                    if (dis[cur] + G.getWeight(cur, w) < dis[w])
+                    if (dis[cur] + G.getWeight(cur, w) < dis[w]) {
                         dis[w] = dis[cur] + G.getWeight(cur, w);
+
+                        // 每个node可能在pq中有多份
+                        pq.add(new Node(w, dis[w]));
+                    }
                 }
         }
     }
@@ -75,7 +91,7 @@ public class Dijkstra {
 
     public static void main(String[] args) {
         WeightedGraph g = new WeightedGraph("./src/main/java/com/cunjunwang/algorithm/advancedgraph/test_graph/dij_g.txt");
-        Dijkstra dijkstra = new Dijkstra(g, 0);
+        DijkstraOptimized dijkstra = new DijkstraOptimized(g, 0);
 
         for (int v = 0; v < g.V(); v++)
             System.out.print(dijkstra.distTo(v) + " ");
