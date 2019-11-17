@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.directed_graph.cycle_detection;
+package com.cunjunwang.algorithm.advancedgraph.directed_cycle_detection;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
