@@ -14,6 +14,9 @@ public class KruskalMST {
 
     private ArrayList<WeightedEdge> mst;
 
+    /*
+     * O(E*logE)
+     */
     public KruskalMST(WeightedGraph G) {
         this.G = G;
         mst = new ArrayList<>();
