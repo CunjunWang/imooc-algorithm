@@ -2,7 +2,9 @@ package com.cunjunwang.algorithm.advancedgraph.weighted_shortest_path;
 
 import com.cunjunwang.algorithm.advancedgraph.WeightedGraph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Created by CunjunWang on 2019-11-17.
@@ -15,6 +17,8 @@ public class BellmanFord {
     private int[] dis;
 
     private boolean hasNegativeCycle;
+
+    private int[] pre;
 
     /*
      * 进行V-1轮松弛操作
@@ -31,6 +35,9 @@ public class BellmanFord {
         Arrays.fill(dis, Integer.MAX_VALUE);
         dis[s] = 0;
 
+        pre = new int[G.V()];
+        Arrays.fill(pre, -1);
+
         hasNegativeCycle = false;
 
         // V - 1 次 relaxation
@@ -39,17 +46,20 @@ public class BellmanFord {
             for (int v = 0; v < G.V(); v++)
                 for (int w : G.adj(v))
                     if (dis[v] != Integer.MAX_VALUE &&
-                            dis[v] + G.getWeight(v, w) < dis[w])
+                            dis[v] + G.getWeight(v, w) < dis[w]) {
                         dis[w] = dis[v] + G.getWeight(v, w);
-
+                        pre[w] = v;
+                    }
         }
 
         // 再多进行一轮松弛，如果发现还能更新，说明已经有负权环了
         for (int v = 0; v < G.V(); v++)
             for (int w : G.adj(v))
                 if (dis[v] != Integer.MAX_VALUE &&
-                        dis[v] + G.getWeight(v, w) < dis[w])
+                        dis[v] + G.getWeight(v, w) < dis[w]) {
                     hasNegativeCycle = true;
+                    break;
+                }
 
     }
 
@@ -67,6 +77,21 @@ public class BellmanFord {
         if (hasNegativeCycle)
             throw new RuntimeException("Has negative cycle");
         return dis[v];
+    }
+
+    public Iterable<Integer> path(int t) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (!isConnectedTo(t))
+            return res;
+
+        int cur = t;
+        while (cur != s) {
+            res.add(cur);
+            cur = pre[cur];
+        }
+        res.add(s);
+        Collections.reverse(res);
+        return res;
     }
 
     public static void main(String[] args) {
