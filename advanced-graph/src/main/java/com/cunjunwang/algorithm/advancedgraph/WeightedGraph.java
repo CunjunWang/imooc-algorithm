@@ -158,6 +158,16 @@ public class WeightedGraph implements Cloneable {
         }
     }
 
+    public void setWeight(int v, int w, int newWeight) {
+        if (!hasEdge(v, w))
+            throw new IllegalArgumentException("Invalid vertex, no such edge");
+        else
+            adj[v].put(w, newWeight);
+
+        if (!isDirected)
+            adj[w].put(v, newWeight);
+    }
+
     /**
      * 返回顶点的度
      *
