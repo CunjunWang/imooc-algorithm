@@ -43,29 +43,17 @@ public class WeightedGraph implements Cloneable {
             for (int i = 0; i < V; i++)
                 adj[i] = new TreeMap<Integer, Integer>();
 
-            E = scanner.nextInt();
-            if (E < 0)
+            int e = scanner.nextInt();
+            if (e < 0)
                 throw new IllegalArgumentException("E must be non-negative");
-            for (int i = 0; i < E; i++) {
+
+            E = 0;
+            for (int i = 0; i < e; i++) {
                 int a = scanner.nextInt();
-                validateVertex(a);
                 int b = scanner.nextInt();
-                validateVertex(b);
                 int weight = scanner.nextInt();
 
-                // 判断自环边
-                if (a == b)
-                    throw new IllegalArgumentException("Self loop detected");
-
-                // 判断平行边, 最坏 O(lg(V))
-                if (adj[a].containsKey(b))
-                    throw new IllegalArgumentException("Parallel edges detected");
-
-                // O(lg(V))
-                adj[a].put(b, weight);
-
-                if (!isDirected)
-                    adj[b].put(a, weight);
+                addEdge(a, b, weight);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,6 +62,16 @@ public class WeightedGraph implements Cloneable {
 
     public WeightedGraph(String filename) {
         this(filename, false);
+    }
+
+    public WeightedGraph(int V, boolean isDirected) {
+        this.V = V;
+        this.isDirected = isDirected;
+        this.E = 0;
+
+        adj = new TreeMap[V];
+        for (int i = 0; i < V; i++)
+            adj[i] = new TreeMap<>();
     }
 
     public boolean isDirected() {
@@ -110,6 +108,27 @@ public class WeightedGraph implements Cloneable {
         validateVertex(v);
         validateVertex(w);
         return adj[v].containsKey(w);
+    }
+
+    public void addEdge(int a, int b, int v) {
+        validateVertex(a);
+        validateVertex(b);
+
+        // 判断自环边
+        if (a == b)
+            throw new IllegalArgumentException("Self loop detected");
+
+        // 判断平行边, 最坏 O(lg(V))
+        if (adj[a].containsKey(b))
+            throw new IllegalArgumentException("Parallel edges detected");
+
+        // O(lg(V))
+        adj[a].put(b, v);
+
+        if (!isDirected)
+            adj[b].put(a, v);
+
+        this.E++;
     }
 
     /**

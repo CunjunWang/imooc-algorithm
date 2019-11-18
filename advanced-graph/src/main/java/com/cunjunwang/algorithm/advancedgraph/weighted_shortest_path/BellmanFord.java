@@ -41,8 +41,7 @@ public class BellmanFord {
         hasNegativeCycle = false;
 
         // V - 1 次 relaxation
-        for (int pass = 1; pass < G.V(); pass++) {
-
+        for (int pass = 1; pass < G.V(); pass++)
             for (int v = 0; v < G.V(); v++)
                 for (int w : G.adj(v))
                     if (dis[v] != Integer.MAX_VALUE &&
@@ -50,7 +49,7 @@ public class BellmanFord {
                         dis[w] = dis[v] + G.getWeight(v, w);
                         pre[w] = v;
                     }
-        }
+
 
         // 再多进行一轮松弛，如果发现还能更新，说明已经有负权环了
         for (int v = 0; v < G.V(); v++)
