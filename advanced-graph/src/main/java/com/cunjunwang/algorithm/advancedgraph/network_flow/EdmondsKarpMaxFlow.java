@@ -20,6 +20,10 @@ public class EdmondsKarpMaxFlow {
 
     private WeightedGraph residualGraph;
 
+    /*
+     * O(maxFlow * E) for Ford-Fulkerson Frame
+     * O(V*E*E) for Edmonds-Karp
+     */
     public EdmondsKarpMaxFlow(WeightedGraph network, int s, int t) {
         if (!network.isDirected())
             throw new IllegalArgumentException("Max flow works only on directed graph.");

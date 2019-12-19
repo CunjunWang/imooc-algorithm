@@ -65,7 +65,7 @@ public class DijkstraOptimized {
 
         while (!pq.isEmpty()) {
 
-            // 1. 找当前没有确定最短距离的点钟，距离最小的那个点
+            // 1. 找当前没有确定最短距离的点中，距离最小的那个点
             // O(logE) 最多的情况下，每一条边都加了一份关于另一个顶点的值
             int cur = pq.poll().v;
             if (visited[cur])

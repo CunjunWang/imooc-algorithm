@@ -82,6 +82,24 @@ public class Graph {
         this(filename, false);
     }
 
+    public Graph(TreeSet<Integer>[] adj, boolean isDirected) {
+        this.adj = adj;
+        this.isDirected = isDirected;
+        this.V = adj.length;
+        this.E = 0;
+        indegrees = new int[V];
+        outdegrees = new int[V];
+        for (int v = 0; v < V; v++)
+            for (int w : adj[v]) {
+                outdegrees[v]++;
+                indegrees[w]++;
+                this.E++;
+            }
+
+        if (!isDirected)
+            this.E /= 2;
+    }
+
     public boolean isDirected() {
         return this.isDirected;
     }
@@ -185,6 +203,18 @@ public class Graph {
     public void validateVertex(int v) {
         if (v < 0 || v > V)
             throw new IllegalArgumentException(String.format("Vertex %d is invalid", v));
+    }
+
+    public Graph reverseGraph() {
+        TreeSet<Integer>[] rAdj = new TreeSet[V];
+        for (int i = 0; i < V; i++)
+            rAdj[i] = new TreeSet<>();
+
+        for (int v = 0; v < V; v++)
+            for (int w : adj(v))
+                rAdj[w].add(v);
+
+        return new Graph(rAdj, isDirected);
     }
 
     @Override

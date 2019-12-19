@@ -1,28 +1,25 @@
-package com.cunjunwang.algorithm.advancedgraph.bridge_cut_vertex.find_bridge;
+package com.cunjunwang.algorithm.advancedgraph.bridge.find_cut_vertex;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
 
 import java.util.ArrayList;
 
 /**
- * 通过dfs寻找图的桥
- * Created by CunjunWang on 2019-09-09.
+ * 通过dfs寻找图的割点
+ * Created by CunjunWang on 2019-09-11.
  */
-public class FindBridges {
+public class FindCutVertex {
 
     private Graph G;
-
     private boolean[] visited;
 
     private int[] ord;
-
     private int[] low;
-
     private int cnt; // 当前遍历了多少个顶点
 
-    private ArrayList<Edge> res;
+    private ArrayList<Integer> res;
 
-    public FindBridges(Graph G) {
+    public FindCutVertex(Graph G) {
         this.G = G;
         visited = new boolean[G.V()];
         ord = new int[G.V()];
@@ -48,15 +45,23 @@ public class FindBridges {
         low[v] = ord[v];
         cnt++;
 
+        int child = 0;
         for (int w : G.adj(v)) {
             if (!visited[w]) {
                 dfs(w, v);
                 low[v] = Math.min(low[v], low[w]);
-                // v-w是新的边, 要判断是不是桥
-                if (low[w] > ord[v]) {
-                    // 找到了桥
-                    res.add(new Edge(v, w));
+
+                // v 不可以是根节点, 根节点有单独判断
+                if (v != parent && low[w] >= ord[v]) {
+                    // 找到了割点
+                    res.add(v);
                 }
+
+                child++;
+                if (v == parent && child >= 2 && !res.contains(v)) {
+                    res.add(v);
+                }
+
             } else {
                 if (w != parent) {
                     low[v] = Math.min(low[v], low[w]);
@@ -66,19 +71,19 @@ public class FindBridges {
     }
 
     /**
-     * 获得桥列表
+     * 获得割点列表
      *
-     * @return 桥列表
+     * @return 割点列表
      */
-    public ArrayList<Edge> getRes() {
+    public ArrayList<Integer> getRes() {
         return res;
     }
 
     public static void main(String[] args) {
         String filename = "./src/main/java/com/cunjunwang/algorithm/advancedgraph/g4.txt";
         Graph G = new Graph(filename);
-        FindBridges findBridges = new FindBridges(G);
-        System.out.println("Bridges: " + findBridges.getRes());
+        FindCutVertex findCutVertex = new FindCutVertex(G);
+        System.out.println("Cut points: " + findCutVertex.getRes());
     }
 
 }

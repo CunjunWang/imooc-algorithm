@@ -17,6 +17,9 @@ public class ConnectedComponent {
     private int connectedComponentCount;
 
     public ConnectedComponent(Graph G) {
+        if (G.isDirected())
+            throw new IllegalArgumentException("Only works for undirected graph");
+
         this.G = G;
         visited = new boolean[G.V()];
         connectedComponentCount = 0;

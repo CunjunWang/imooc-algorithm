@@ -1,4 +1,4 @@
-package com.cunjunwang.algorithm.advancedgraph.bridge_cut_vertex.find_bridge;
+package com.cunjunwang.algorithm.advancedgraph.bridge.find_bridge;
 
 /**
  * Created by CunjunWang on 2019-09-09.

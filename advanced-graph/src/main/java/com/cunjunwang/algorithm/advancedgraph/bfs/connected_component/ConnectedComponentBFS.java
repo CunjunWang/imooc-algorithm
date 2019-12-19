@@ -1,7 +1,6 @@
 package com.cunjunwang.algorithm.advancedgraph.bfs.connected_component;
 
 import com.cunjunwang.algorithm.advancedgraph.Graph;
-import com.cunjunwang.algorithm.advancedgraph.dfs.connected_component.ConnectedComponent;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -19,6 +18,9 @@ public class ConnectedComponentBFS {
     private int connectedComponentCount;
 
     public ConnectedComponentBFS(Graph G) {
+        if (G.isDirected())
+            throw new IllegalArgumentException("Only works for undirected graph");
+
         this.G = G;
         visited = new boolean[G.V()];
         connectedComponentCount = 0;
